@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "image": "dog1.jpg",
+        "name": "Buddy"
+    },
+    {
+        "id": 2,
+        "image": "eric.png",
+        "name": "Eric"
+    },
+    {
+        "id": 3,
+        "image": "sarah.png",
+        "name": "Sarah"
+    },
+    {
+        "id": 4,
+        "image": "dog2.jpg",
+        "name": "Killer"
+    },
+    {
+        "id": 5,
+        "image": "dog3.jpg",
+        "name": "Tucker"
+    },
+    {
+        "id": 6,
+        "image": "sam.png",
+        "name": "Sam"
+    },
+    {
+        "id": 7,
+        "image": "dog5.jpg",
+        "name": "Aspen"
+    },
+    {
+        "id": 8,
+        "image": "kevin.png",
+        "name": "Kevin"
+    }
+]
