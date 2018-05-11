@@ -1,23 +1,33 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import AddButton from "../AddButton";
 
 
 const UserStoryTile = (props) => (
- <div>
-   <li className="list-group-item">
-        <Link
-          to="/choosecontenttype"
-          className={window.location.pathname==="/choosecontenttype" ? "nav-link active" : "nav-link"}
-        >
-            <img className="thumb"  alt={props.id} src={require("../../images/" + props.src)}/>
-            {props.title} 
-        
-            <button type="button" className="btn btn-default btn-lg btn-right" aria-label="Left Align">
-                <i className="far fa-plus-square"></i>
-            </button>
-        </Link>
-    </li>
- </div>
+
+
+<div>
+    <nav className="navbar navbar-top navbar-light bg-light">
+    {(props.origin === "userPage") ? 
+      <Link
+        to="/story"
+        className={window.location.pathname==="/story" ? "nav-link active" : "nav-link"}
+      >
+        <img className="thumb"  alt={props.id} src={require("../../images/" + props.src)}/>
+                {props.title} 
+        <a className="navbar-brand"></a>
+      </Link>
+      : <Link
+      to="/choosecontenttype"
+      className={window.location.pathname==="/choosecontenttype" ? "nav-link active" : "nav-link"}
+    >
+      <img className="thumb"  alt={props.id} src={require("../../images/" + props.src)}/>
+              {props.title} 
+      <a className="navbar-brand"></a>
+    </Link>}
+
+    </nav>
+  </div>
 );
 
 

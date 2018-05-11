@@ -4,6 +4,8 @@ import UserProfile from "../../components/UserProfile";
 import UserStoryTile from "../../components/UserStoryTile";
 import Stories from "../../stories.json";
 
+const thispage="userPage";
+
 class App extends Component {
   render() {
     return (
@@ -16,7 +18,8 @@ class App extends Component {
               quote={"A bad day on the course is better than a great day at work!"}
               imageClick={this.imageClick}
             />
-        Open Stories
+        <br></br>
+        My Stories
 
         {Stories.map((user) => (
             <UserStoryTile
@@ -24,6 +27,7 @@ class App extends Component {
               title={user.title}
               src={user.image}
               imageClick={this.imageClick}
+              origin={thispage}
             />
           ))}
       

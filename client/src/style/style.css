@@ -81,8 +81,8 @@
 }
 
 .thumb {
-	width: 20px;
-	height: 20px;
+	width: 60px;
+	height: 60px;
 	margin-right: 10px;
 }
 
@@ -115,4 +115,33 @@
     display: none;
 }
 
+.image-div {
+	height: 100%;
+	object-fit: contain;
+}
 
+.list-group-item {
+	width: 100%;
+	float: left;
+}
+
+.story-img {
+    height: 100%; 
+	width: 100%; 
+	object-fit: contain;
+	-webkit-transform:rotate(90deg);
+}
+
+.nav-link {
+	float: left;
+	padding: 10px;
+}
+
+.story-name {
+	width: 200px;
+	float: left;
+}
+
+.center-text {
+	text-align: center;
+}
