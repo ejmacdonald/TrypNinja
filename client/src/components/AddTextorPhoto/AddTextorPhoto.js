@@ -26,6 +26,7 @@ const AddTextorPhoto = (props) => (
         <input id="file-input" type="file" accept="image/*"/>
     </div>
 
+
 </div>
 );
 
