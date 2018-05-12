@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes)
 {
     userName:
     {
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: 
         {
@@ -13,7 +13,17 @@ module.exports = function(sequelize, DataTypes)
     },
     quote: 
     {
-        type: DataTypes.String
+        type: DataTypes.STRING
+    },
+
+    googleId: 
+    {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate:
+        {
+            len: [1]
+        }
     }
 });
 

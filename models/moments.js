@@ -2,26 +2,31 @@ module.exports = function(sequelize, DataTypes)
 {
     var Moment = sequelize.define("Moment", 
 {
-    eventId:
-    {
-        type: DataTypes.Integer,
-        allowNull: false
-    },
+    // eventId:
+    // {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false
+    // },
     moment:
     {
-        type: DataTypes.String
+        type: DataTypes.STRING
     },
 
     isPhoto:
     {
-        type: DataTypes.Boolean,
+        type: DataTypes.BOOLEAN,
         defaultValue: false
     },
 
     caption:
     {
-        type: DataTypes.String
+        type: DataTypes.STRING
     }
+
+    Event.belongsTo(models.Event,
+    {
+        onDelete: "cascase"
+    });
 });
 return Moment;
 }
