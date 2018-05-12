@@ -2,14 +2,9 @@ module.exports = function(sequelize, DataTypes)
 {
     var Event = sequelize.define("Event", 
 {
-    userId:
-    {
-        type: DataTypes.Integer,
-        allowNull: false
-    },
     title: 
     {
-        type: DataTypes.String
+        type: DataTypes.STRING
     }
 });
 
