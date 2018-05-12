@@ -6,6 +6,8 @@ import CreateNew from "../../components/CreateNew";
 import UserStoryTile from "../../components/UserStoryTile";
 import StoryList from "../../stories.json";
 
+const thispage="addContent";
+
 class App extends Component {
   render() {
     return (
@@ -13,7 +15,9 @@ class App extends Component {
         <TitleBar/>
         <CreateNew />
 
-        <div class="center-text"> or </div>
+        <br></br>
+
+        <h5> or Continue one of these...</h5>
         <br></br>
 
         {StoryList.map((user) => (
@@ -22,6 +26,7 @@ class App extends Component {
               title={user.title}
               src={user.image}
               imageClick={this.imageClick}
+              origin={thispage}
             />
           ))}
       
@@ -29,6 +34,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;

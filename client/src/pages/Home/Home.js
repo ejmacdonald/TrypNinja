@@ -9,7 +9,9 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <TitleBar/>
+        <TitleBar
+          showBtn={true}
+        />
 
         <div className="card-deck">
           {UserList.map((user) => (
