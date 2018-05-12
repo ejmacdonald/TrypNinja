@@ -7,6 +7,8 @@ var html = require('./routes/htmlRoutes.js');
 var session = require("express-session"),
   bodyParser = require("body-parser");
 
+var db = require("./models");
+
 app.use(express.static("public"));
 app.use(session({ secret: "cats" }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,6 +23,9 @@ app.use("/", html);
 // Send every request to the React app
 // Define any API routes before this runs
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
+db.sequelize.sync({ force: true }).then(function()
+{
+  app.listen(PORT, function() {
+    console.log(`🌎 ==> Server now on port ${PORT}!`);
+  });
 });
