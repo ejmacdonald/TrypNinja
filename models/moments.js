@@ -24,9 +24,16 @@ module.exports = function(sequelize, DataTypes)
     }
 
     });
-    Moment.belongsTo(models.Event,
+
+    Moment.associate = function(models)
     {
-        onDelete: "cascase"
-    });
+        Moment.belongsTo(models.Event,
+        {
+            foreignKey:
+            {
+                allowNull: false
+            },
+        });
+    };
 return Moment;
 }
