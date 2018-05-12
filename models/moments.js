@@ -23,10 +23,10 @@ module.exports = function(sequelize, DataTypes)
         type: DataTypes.STRING
     }
 
-    Event.belongsTo(models.Event,
+    });
+    Moment.belongsTo(models.Event,
     {
         onDelete: "cascase"
     });
-});
 return Moment;
 }
