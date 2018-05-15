@@ -17,8 +17,12 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.238.1",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
     "express-session": "^1.15.6",
+    "multer": "^1.3.0",
+    "multer-s3": "^2.7.0",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
