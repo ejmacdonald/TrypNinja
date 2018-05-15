@@ -6,8 +6,15 @@ var auth = require('./routes/apiRoutes.js')
 var html = require('./routes/htmlRoutes.js');
 var session = require("express-session"),
   bodyParser = require("body-parser");
+var AWS = require('aws-sdk');
+var multer = require('multer');
+const cors = require('cors');
+var router = express.Router();
 
 var db = require("./models");
+
+//enable cors
+app.use(cors());
 
 app.use(express.static("public"));
 app.use(session({ secret: "cats" }));
