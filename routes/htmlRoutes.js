@@ -28,8 +28,18 @@ AWS.config.update({
     });
   router.post('/S3', upload.array('selectedFile', 1), function(req, res){
     console.log("--------" );
-    console.log(req);
+    console.log(req.files[0].location);
+
+    res.send(req.files[0].location);
 
 });
+
+  // POST route for saving a new event
+  app.post("/api/events", function(req, res) {
+    console.log("in Post");
+    db.Event.create(req.body).then(function(dbEvent) {
+      res.json(dbEvent);
+    });
+  });
 
 module.exports = router

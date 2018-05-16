@@ -39,10 +39,12 @@ module.exports = function(app) {
 
   // POST route for saving a new event
   app.post("/api/events", function(req, res) {
+    console.log("in Post");
     db.Event.create(req.body).then(function(dbEvent) {
       res.json(dbEvent);
     });
   });
+
 
   // DELETE route for deleting events
   app.delete("/api/events/:id", function(req, res) {
