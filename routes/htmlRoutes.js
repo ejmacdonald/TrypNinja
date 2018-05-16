@@ -36,7 +36,9 @@ AWS.config.update({
     });
   router.post('/S3', upload.array('selectedFile', 1), function(req, res){
     console.log("--------" );
-    console.log(req);
+    console.log(req.files[0].location);
+
+    res.send(req.files[0].location);
 
 });
 

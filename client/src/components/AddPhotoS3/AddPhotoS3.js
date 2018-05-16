@@ -50,6 +50,9 @@ class AddPhotoS3 extends Component{
               value={caption}
               onChange={this.onChange}
             />
+             <label for="file-input">
+                <i class="fas fa-camera fa-5x add-pad"></i>
+            </label>
             <input
               type="file"
               name="selectedFile"
