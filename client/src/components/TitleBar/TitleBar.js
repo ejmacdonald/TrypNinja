@@ -22,7 +22,7 @@ const titleBar = (props) => (
       {console.log (props)}
 
       {(props.showBtn === true) ? <AddButton /> : null}
-      <AuthenticationTile />
+      <AuthenticationTile/>
     </nav>
   
   </div>
