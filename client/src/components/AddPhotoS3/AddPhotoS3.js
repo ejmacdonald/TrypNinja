@@ -25,6 +25,7 @@ class AddPhotoS3 extends Component{
         this.setState(state);
       }
 
+
       onSubmit = (e) => {
         e.preventDefault();
         const { caption, selectedFile } = this.state;
@@ -36,6 +37,7 @@ class AddPhotoS3 extends Component{
         axios.post('/S3', formData)
           .then((result) => {
             // access results...
+            console.log("completed post promise");
             console.log(result);
           });
       }
@@ -50,6 +52,9 @@ class AddPhotoS3 extends Component{
               value={caption}
               onChange={this.onChange}
             />
+             <label for="file-input">
+                <i class="fas fa-camera fa-5x add-pad"></i>
+            </label>
             <input
               type="file"
               name="selectedFile"
