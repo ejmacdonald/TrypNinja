@@ -4,14 +4,6 @@ var AWS = require('aws-sdk');
 var multer = require('multer');
 var multerS3 = require('multer-s3');
 
-router.get("/", function(req,res){
-  if(!req.user){
-    res.redirect("/auth")
-    //obviously we want to maybe be a LITTLE more nuanced here
-  } else {res.send(`<h1>HEWWO ${req.user.name}</h1>`)}
-});
-
-
 //AWS
 //aws keys
 var accessKeyId = process.env.AWS_ACCESS_KEY || "AKIAJSQNCM5K6YOIRMPA";
@@ -41,5 +33,13 @@ AWS.config.update({
     res.send(req.files[0].location);
 
 });
+
+  // POST route for saving a new event
+  app.post("/api/events", function(req, res) {
+    console.log("in Post");
+    db.Event.create(req.body).then(function(dbEvent) {
+      res.json(dbEvent);
+    });
+  });
 
 module.exports = router
