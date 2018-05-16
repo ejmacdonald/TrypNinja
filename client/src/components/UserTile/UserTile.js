@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 const userTile = (props) => (
  <div className="card text-center">
     <a className="card-img-top" id={props.id}>
-        <img className="card-img" alt={props.id} src={require("../../images/" + props.src)}/>
+        <img className="card-img" alt={props.id} src={props.src}/>
     </a>
 
     <div className="card-body">
