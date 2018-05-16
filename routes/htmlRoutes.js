@@ -35,7 +35,7 @@ AWS.config.update({
 });
 
   // POST route for saving a new event
-  app.post("/api/events", function(req, res) {
+  router.post("/api/events", function(req, res) {
     console.log("in Post");
     db.Event.create(req.body).then(function(dbEvent) {
       res.json(dbEvent);
