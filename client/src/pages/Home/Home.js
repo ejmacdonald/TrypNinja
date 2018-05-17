@@ -9,9 +9,9 @@ console.log("UserList: " + JSON.stringify(UserList));
 class App extends Component {
   constructor(){
     super()
-    this.state = { userList: null }
+    this.state = { userList: null, key:Math.random()}
   }
-  componentWillMount(){
+  getUsers = ()=>{
     axios.get("/user/all")
       .then(users => {
         console.log(`all users:`)
@@ -23,6 +23,9 @@ class App extends Component {
           this.setState({ userList: null })
         }
       })
+  }
+  componentWillMount(){
+    this.getUsers()
     if (this.state.userList==null){
       this.setState({userList:UserList})
     }
@@ -32,6 +35,7 @@ class App extends Component {
       <div className="wrapper">
         <TitleBar
           showBtn={true}
+          addUser={this.getUsers}
         />
 
         <div className="card-deck">
