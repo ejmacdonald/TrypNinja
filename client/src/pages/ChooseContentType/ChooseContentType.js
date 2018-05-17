@@ -13,9 +13,9 @@ class App extends Component {
             <AddTextorPhoto />
             <AddPhotoS3 />
         </div>
-        {/* <div>
+        <div>
           <EndButton />
-        </div> */}
+        </div>
       </div>
 
     );

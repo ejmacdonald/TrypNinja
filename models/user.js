@@ -28,6 +28,9 @@ module.exports = function(sequelize, DataTypes)
     profileImg:{
         type: DataTypes.STRING,
         allowNull: false
+    },
+    token:{
+        type: DataTypes.STRING
     }
 });
 

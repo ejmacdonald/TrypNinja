@@ -10,6 +10,8 @@ class NameStory extends Component{
       };
   }
 
+  // var token = sessionStorage.getItem(TNToken);
+  // console.log ("token: "  + token);
 
   onClick = (e) => {
     e.preventDefault();
