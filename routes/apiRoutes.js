@@ -39,4 +39,13 @@ router.post("/object", (req,res)=>{
   })
   .catch(err=>console.log(err))
 })
+
+router.get("/:token", (req,res)=>{
+  db.User.find({attributes:['id','userName'], where:{token:req.params.token}})
+  .then(user=>{
+    console.log("user request")
+    res.send(user)
+  })
+})
+
 module.exports = {router, db}
