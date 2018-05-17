@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-var api = require('./routes/apiRoutes.js')
+var api = require('./routes/superRouter.js')
 var html = require('./routes/htmlRoutes.js');
 var bodyParser = require("body-parser");
 const cors = require('cors');
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-app.use("/user",api.router);
+app.use("/api",api.router);
 app.use("/", html);
 // Send every request to the React app
 // Define any API routes before this runs
