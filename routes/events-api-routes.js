@@ -1,12 +1,16 @@
-// Requiring our models
+const axios = require('axios');
+const express = require('express');
+var router = express.Router();
 var db = require("../models");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
+  console.log("in events-api-routes");
 
   // GET route for getting all of the posts
-  app.get("/api/events", function(req, res) {
+  router.get("/api/events", function(req, res) {
+    console.log("in GET FINDALL event");
     var query = {};
     if (req.query.user_id) {
       query.AUserId = req.query.user_id;
@@ -23,7 +27,8 @@ module.exports = function(app) {
   });
 
   // Get route for retrieving a single event
-  app.get("/api/events/:id", function(req, res) {
+  router.get("/api/events/:id", function(req, res) {
+    console.log("in GET FINDONE event");
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
@@ -38,16 +43,20 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new event
-  app.post("/api/events", function(req, res) {
-    console.log("in Post");
-    db.Event.create(req.body).then(function(dbEvent) {
+  router.post("/createNew", function(req, res) {
+    console.log("in POST route");
+    db.Event.create({
+      title: req.body.title, 
+      Userid: req.body.userId
+    }).then(function(dbEvent) {
       res.json(dbEvent);
     });
   });
 
 
   // DELETE route for deleting events
-  app.delete("/api/events/:id", function(req, res) {
+  router.delete("/api/events/:id", function(req, res) {
+    console.log("in GET Delete One event");
     db.Event.destroy({
       where: {
         id: req.params.id
@@ -58,7 +67,7 @@ module.exports = function(app) {
   });
 
   // PUT route for updating events
-  app.put("/api/events", function(req, res) {
+  router.put("/nothing", function(req, res) {
     db.Event.update(
       req.body,
       {

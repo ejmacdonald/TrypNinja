@@ -10,28 +10,37 @@ class NameStory extends Component{
       };
   }
 
-  // var token = sessionStorage.getItem(TNToken);
-  // console.log ("token: "  + token);
-
   onClick = (e) => {
     e.preventDefault();
+
     const { title  } = this.state;
     let formData = new FormData();
+    let token = sessionStorage.getItem("TNToken");
 
-    console.log("found click");
+    console.log("found click, here's the token: " + token);
 
     console.log ("this.state" + JSON.stringify(this.state));
-    formData.append('title', title);
 
-    console.log("title" + title);
+    axios.get('/api/user/' + token)
+      .then((result) => {
+        let userName = result.data.userName;
+        let userId = result.data.id;
+        console.log("useName: " + userName);
+        console.log("userId: " + userId);
 
-    axios.post('/api/events', formData)
+    let formData = {title, userId};
+
+    console.log("x: " + JSON.stringify(formData));
+
+    console.log("here's the post");
+
+    axios.post('/api/event/createNew', formData)
       .then((result) => {
         // access results...
         console.log("promise completed");
         console.log(result);
       });
-
+    });
   }
 
   updateInput(e) {

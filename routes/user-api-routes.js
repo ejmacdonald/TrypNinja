@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/users/:id", function(req, res) {
-
+    console.log("Getting userID!!!");
     db.User.findOne({
       where: {
         id: req.params.id
