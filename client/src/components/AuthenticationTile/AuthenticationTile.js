@@ -18,7 +18,7 @@ class login extends Component {
   responseGoogle = (response) => {
     let profile = response.profileObj;
     console.log(profile)
-    axios.post("/user/object", {data: profile})
+    axios.post("/api/user/object", {data: profile})
     .then(response=>{
       console.log(response)
       this.setState({name: profile.name})
