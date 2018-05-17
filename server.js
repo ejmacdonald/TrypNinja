@@ -4,17 +4,15 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 var api = require('./routes/apiRoutes.js')
 var html = require('./routes/htmlRoutes.js');
-var session = require("express-session"),
-  bodyParser = require("body-parser");
+var bodyParser = require("body-parser");
 const cors = require('cors');
 var db = api.db
 
 //enable cors
 app.use(cors());
-
 app.use(express.static("public"));
-app.use(session({ secret: "cats" }));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

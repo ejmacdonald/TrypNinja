@@ -2,15 +2,15 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 const EndButton = (props) => (
- <div className="card text-center">
-    <button type="button" class="btn btn-secondary btn-lg btn-block">End this Story
+    <div>
         <Link
             to="/"
             className={window.location.pathname==="/" ? "nav-link active" : "nav-link"}
         >
+            <button type="button" className="btn btn-danger btn-lg">End this Story
+        
+            </button>
         </Link>
-    </button>
-    
  </div>
 );
 
