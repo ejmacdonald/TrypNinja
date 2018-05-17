@@ -16,7 +16,7 @@ function hash(obj) {
 };
 
 router.get("/all", (req,res)=>{
-  db.User.findAll({order:['id','userName','imgUrl',['updatedAt','DESC']]})
+    db.User.findAll({attributes:['id','userName','profileImg'], order: [['updatedAt','DESC']]})
   .then(users=>{
     res.send(users)
   })
