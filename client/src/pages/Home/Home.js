@@ -12,7 +12,7 @@ class App extends Component {
     this.state = { userList: null, key:Math.random()}
   }
   getUsers = ()=>{
-    axios.get("/user/all")
+    axios.get("/api/user/all")
       .then(users => {
         console.log(`all users:`)
         console.log(users.data)
