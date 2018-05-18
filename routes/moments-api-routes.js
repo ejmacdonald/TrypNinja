@@ -1,12 +1,15 @@
 // Requiring our models
+const axios = require('axios');
+const express = require('express');
+var router = express.Router();
 var db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+
 
   // GET route for getting all of the posts
-  app.get("/api/moments", function(req, res) {
+  router.get("/api/moments", function(req, res) {
     var query = {};
     if (req.query.event_id) {
       query.EventId = req.query.event_id;
@@ -23,7 +26,7 @@ module.exports = function(app) {
   });
 
   // Get route for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
+  router.get("/api/posts/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Event
@@ -38,14 +41,14 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new moment
-  app.post("/api/moments", function(req, res) {
+  router.post("/api/moments", function(req, res) {
     db.Moment.create(req.body).then(function(dbEvent) {
       res.json(dbMoment);
     });
   });
 
   // DELETE route for deleting moment
-  app.delete("/api/moments/:id", function(req, res) {
+  router.delete("/api/moments/:id", function(req, res) {
     db.Moment.destroy({
       where: {
         id: req.params.id
@@ -56,7 +59,7 @@ module.exports = function(app) {
   });
 
   // PUT route for updating moments
-  app.put("/api/moments", function(req, res) {
+  router.put("/api/moments", function(req, res) {
     db.Moment.update(
       req.body,
       {
@@ -67,4 +70,5 @@ module.exports = function(app) {
       res.json(dbMoment);
     });
   });
-};
+
+  module.exports = {router, db};

@@ -34,7 +34,7 @@ class AddPhotoS3 extends Component{
         formData.append('caption', caption);
         formData.append('selectedFile', selectedFile);
 
-        axios.post('/S3', formData)
+        axios.post('/S3/S3', formData)
           .then((result) => {
             // access results...
             console.log("completed post promise");

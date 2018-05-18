@@ -18,11 +18,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 app.use("/api",api.router);
-app.use("/", html);
+app.use("/S3", html);
 // Send every request to the React app
 // Define any API routes before this runs
 
-db.sequelize.sync({ force: true }).then(function()
+db.sequelize.sync({ force: false }).then(function()
 {
   app.listen(PORT, function() {
     console.log(`🌎 ==> Server now on port ${PORT}!`);

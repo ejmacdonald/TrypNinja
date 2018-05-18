@@ -29,6 +29,7 @@ class NameStory extends Component{
         console.log("userId: " + userId);
 
     let formData = {title, userId};
+    // formData = {title, token};
 
     console.log("x: " + JSON.stringify(formData));
 
