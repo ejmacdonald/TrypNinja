@@ -6,7 +6,9 @@ class NameStory extends Component{
   constructor(props){
       super(props);
       this.state = {
-          title: ''
+          title: '',
+          story: {},
+          hidden: true
       };
   }
 
@@ -38,19 +40,24 @@ class NameStory extends Component{
     axios.post('/api/event/createNew', formData)
       .then((result) => {
         // access results...
+        this.setState({title: result.data.title, story: result.data, hidden: false});
         console.log("promise completed");
         console.log(result);
+        
+        console.log(this.state.story.id);
       });
     });
   }
 
-  updateInput(e) {
+  updateInput (e) {
     console.log("inside the update function");
+    const {name, value} = e.target;
     this.setState({
       title: e.target.value
+      // [name]: value
     });
     console.log("updatesetstate" + JSON.stringify(this.state));
-  }
+  };
 
 
 
@@ -58,8 +65,10 @@ render() {
 
   return (
     <div>
+    <form>
     <div className="form-group">
-      <label for="storyName">What's the Name of your Story?</label>
+      
+      <label htmlFor="storyName">What's the Name of your Story?</label>
       <input 
         type="text"
         className="form-control"
@@ -67,22 +76,31 @@ render() {
         // placeholder="Story Name"
         value={this.state.title}
         onChange={evt => this.updateInput(evt)}
+        // onChange={this.handledInputChange}
       />
     </div>
 
-    <Link
-          to="/choosecontenttype"
-          className={window.location.pathname==="/choosecontenttype" ? "nav-link active" : "nav-link"}
-    >
+    
       <button 
         type="submit" 
         className="btn btn-primary mb-2"
         id="submit-btn"
         onClick={this.onClick}
       >
+      {/* <Link to={"/choosecontenttype/" + this.state.story.id}>
+      Begin
+      </Link> */}
       Begin
       </button>
-    </Link>
+      <button
+        className= {this.state.hidden ? 'hidden btn btn-success mb-2' : 'btn btn-success mb-2'}
+      >
+        <Link to={"/choosecontenttype/" + this.state.story.id}>
+        
+        Add Moment
+        </Link>
+      </button>
+      </form>
     </div>
     
   );

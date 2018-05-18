@@ -28,7 +28,7 @@ var db = require("../models");
   });
 
   // Get route for retrieving a single event
-  router.get("/api/events/:id", function(req, res) {
+  router.get("/:id", function(req, res) {
     console.log("in GET FINDONE event");
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
@@ -37,8 +37,9 @@ var db = require("../models");
       where: {
         id: req.params.id
       },
-      include: [db.User]
+      // include: [db.User]
     }).then(function(dbEvent) {
+      console.log(dbEvent);
       res.json(dbEvent);
     });
   });
