@@ -8,7 +8,6 @@ var db = require("../models");
 // module.exports = function(app) {
   console.log("in events-api-routes");
   
-
   // GET route for getting all of the posts
   router.get("/api/events", function(req, res) {
     console.log("in GET FINDALL event");
@@ -70,13 +69,17 @@ var db = require("../models");
   });
 
   // PUT route for updating events
-  router.put("/nothing", function(req, res) {
-    db.Event.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
+  router.put("/nothing/:id", function(req, res) {
+    console.log("in nothing route");
+    console.log("req.body: " + req.body);
+    console.log("req.params.id: " + req.params.id);
+    db.Event.update({
+      isOpen: req.body.open,
+     },
+     {
+      where: {
+          id: req.params.id
+      }
       }).then(function(dbEvent) {
       res.json(dbEvent);
     });

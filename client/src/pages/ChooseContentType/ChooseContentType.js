@@ -11,6 +11,7 @@ class ChooseContentType extends Component {
     story: {}
   }
 
+
   componentDidMount(){
     console.log("logging params");
     console.log(this.props.match.params);
