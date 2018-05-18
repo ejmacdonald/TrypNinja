@@ -15,7 +15,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/add" component={AddContent} />
         <Route exact path="/start" component={StartStory} />
-        <Route exact path="/choosecontenttype" component={ChooseContentType} />
+        <Route exact path="/choosecontenttype/:id" component={ChooseContentType} />
         <Route exact path="/addtext" component={TextStory} />
         <Route exact path="/user" component={UserPage} />
         <Route exact path="/story" component={Story} />

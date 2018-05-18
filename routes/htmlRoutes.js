@@ -3,6 +3,7 @@ var router = express.Router();
 var AWS = require('aws-sdk');
 var multer = require('multer');
 var multerS3 = require('multer-s3');
+var db = require("../models");
 
 //AWS
 //aws keys
@@ -28,18 +29,18 @@ AWS.config.update({
     });
   router.post('/S3', upload.array('selectedFile', 1), function(req, res){
     console.log("--------" );
+    console.log(req.body);
     console.log(req.files[0].location);
 
-    res.send(req.files[0].location);
-
-});
-
-  // POST route for saving a new event
-  router.post("/api/events", function(req, res) {
-    console.log("in Post");
-    db.Event.create(req.body).then(function(dbEvent) {
+    db.Moment.create({
+      moment: req.files[0].location, 
+      isPhoto: 1,
+      caption: req.body.caption,
+      EventId: req.body.storyId
+    }).then(function(dbEvent) {
       res.json(dbEvent);
     });
-  });
+});
 
-module.exports = router
+
+module.exports = {router, db}
