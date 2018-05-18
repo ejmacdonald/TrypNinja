@@ -7,8 +7,8 @@ const event = require("./events-api-routes.js")
 const moment = require("./moments-api-routes.js")
 
 router.use("/user", user.router)
-router.use("/user", user2)
-router.use("/event", event)
-router.use("/moment", moment)
+router.use("/user", user2.router)
+router.use("/event", event.router)
+router.use("/moment", moment.router)
 
 module.exports = {router, db}
