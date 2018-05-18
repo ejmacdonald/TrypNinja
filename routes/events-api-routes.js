@@ -5,8 +5,9 @@ var db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+// module.exports = function(app) {
   console.log("in events-api-routes");
+  
 
   // GET route for getting all of the posts
   router.get("/api/events", function(req, res) {
@@ -45,9 +46,10 @@ module.exports = function(app) {
   // POST route for saving a new event
   router.post("/createNew", function(req, res) {
     console.log("in POST route");
+    console.log(req.body);
     db.Event.create({
       title: req.body.title, 
-      Userid: req.body.userId
+      UserId: req.body.userId
     }).then(function(dbEvent) {
       res.json(dbEvent);
     });
@@ -78,4 +80,6 @@ module.exports = function(app) {
       res.json(dbEvent);
     });
   });
-};
+// };
+
+module.exports = {router, db};

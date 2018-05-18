@@ -1,7 +1,10 @@
+const axios = require('axios');
+const express = require('express');
+var router = express.Router();
 var db = require("../models");
 
-module.exports = function(app) {
-  app.get("/api/users", function(req, res) {
+
+router.get("/api/users", function(req, res) {
     //
     db.User.findAll({
       include: [db.Events]
@@ -10,7 +13,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  router.get("/api/users/:id", function(req, res) {
     console.log("Getting userID!!!");
     db.User.findOne({
       where: {
@@ -22,13 +25,13 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/users", function(req, res) {
+  router.post("/api/users", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
-  app.delete("/api/users/:id", function(req, res) {
+  router.delete("/api/users/:id", function(req, res) {
     db.User.destroy({
       where: {
         id: req.params.id
@@ -38,4 +41,4 @@ module.exports = function(app) {
     });
   });
 
-};
+  module.exports = {router, db};
