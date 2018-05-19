@@ -38,7 +38,7 @@ class StoryList extends Component{
                 console.log(result.data);
                 this.setState({stories: result.data});
                 console.log("----");
-                console.log(this.state.stories[0].id);
+                // console.log(this.state.stories[0].id);
                 
             });
             });
