@@ -1,0 +1,62 @@
+import React, { Component } from "react";
+import {Link} from "react-router-dom";
+import axios from 'axios';
+import UserStoryTile from "../UserStoryTile";
+
+class StoryList extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            stories: []
+        };
+    }
+
+ 
+
+    componentDidMount(){
+        let token = sessionStorage.getItem("TNToken");
+
+        axios.get('/api/user/' + token)
+            .then((result) => {
+                let userName = result.data.userName;
+                let userId = result.data.id;
+                console.log("useName: " + userName);
+                console.log("userId: " + userId);
+
+            let formData = {userId};
+            
+
+            console.log("x: " + JSON.stringify(formData));
+
+            console.log("here's the post");
+
+            axios.get('/api/event/storyList/' + userId)
+            .then((result) => {
+                // access results...
+                
+                console.log("promise completed");
+                console.log(result.data);
+                this.setState({stories: result.data});
+                
+            });
+            });
+    }
+
+    render(){
+        return(
+            <div> 
+                {/* {this.state.stories.map(story => (
+                    <UserStoryTile 
+                        key={this.state.story.id}
+                        storyId={this.state.story.id}
+                    />
+                ))} */}
+            </div>
+        );
+    }
+}
+
+
+
+
+export default StoryList;

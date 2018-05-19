@@ -14,8 +14,6 @@ class App extends Component {
   getUsers = ()=>{
     axios.get("/api/user/all")
       .then(users => {
-        console.log(`all users:`)
-        console.log(users.data)
         if (users.data !== null) {
           this.setState({ userList: users.data })
         }
@@ -41,9 +39,10 @@ class App extends Component {
         <div className="card-deck">
           {this.state.userList.map((user) => (
             <UserTile
+              key={user.id}
               id={user.id}
               name={user.userName}
-              src={user.profileImg}
+              src={user.profileImg+"?sz=500"}
               imageClick={this.imageClick}
             />
           ))}

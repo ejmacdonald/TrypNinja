@@ -26,8 +26,23 @@ var db = require("../models");
     });
   });
 
+  //route to get the open events for a user and first moment for thumbnail display
+  //using on StoryList.js
+  router.get("/storyList/:id", function(req, res){
+      console.log("storyList db call");
+      db.Event.findAll({
+        where: {
+          UserId: req.params.id,
+          isOpen: 1
+        }
+      }).then(function(dbEvent){
+        console.log(dbEvent);
+      });
+  });
+
+
   // Get route for retrieving a single event
-  router.get("/:id", function(req, res) {
+  router.get("/event/:id", function(req, res) {
     console.log("in GET FINDONE event");
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join

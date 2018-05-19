@@ -15,6 +15,19 @@ class login extends Component {
     super(props)
     this.state={}
   }
+  componentWillMount = ()=>{
+    let token = sessionStorage.getItem("TNToken")
+    if (token) {
+      axios.get("/api/user/"+token)
+      .then(response=>{
+        if (response.data.userName) this.setState({name: response.data.userName, id: response.data.id})
+        else sessionStorage.removeItem("TNToken")
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    }
+  }
   responseGoogle = (response) => {
     let profile = response.profileObj;
     console.log(profile)
@@ -23,7 +36,7 @@ class login extends Component {
       console.log(response)
       this.setState({name: profile.name})
       sessionStorage.setItem("TNToken", response.data)
-      this.props.addUser()
+      if(this.props.addUser) this.props.addUser()
     })
   }
   render(){
