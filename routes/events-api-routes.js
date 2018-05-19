@@ -32,16 +32,19 @@ var db = require("../models");
       console.log("storyList db call");
       db.Event.findAll({
         where: {
-          UserId: req.params.id,
-          isOpen: 1
-        }
+          UserId: req.params.id
+        },
+        order: [['updatedAt', 'DESC']],
+        include: [db.Moment]
       }).then(function(dbEvent){
         console.log(dbEvent);
+        res.json(dbEvent);
       });
   });
 
 
   // Get route for retrieving a single event
+  //using on ChooseCOntentType.js
   router.get("/event/:id", function(req, res) {
     console.log("in GET FINDONE event");
     // Here we add an "include" property to our options in our findOne query
