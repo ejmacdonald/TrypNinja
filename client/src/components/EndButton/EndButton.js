@@ -6,33 +6,28 @@ class EndButton extends Component{
     constructor(props){
         super(props);
         this.state = {
+            storyId: this.props.storyId
         };
     }
 
 
+
     onClick = (e) => {
         e.preventDefault();
-    
-        const { title  } = this.state;
 
-        //hard code a storyID for now
-        let storyID = 1;
+        const ID = this.props.storyId;
         let open = "false";
-
         let formData = new FormData();
 
         formData = { open }
-    
-        console.log("ending this story, need id for story");
 
-        axios.put('/api/event/nothing/' + storyID, formData)
+        axios.put('/api/event/' + ID, formData)
         .then((result) => {
             // access results...
         console.log("promise completed");
         console.log(result);
       });
     }
-
 
     render() {
         return (
