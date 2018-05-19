@@ -37,6 +37,8 @@ class StoryList extends Component{
                 console.log("promise completed");
                 console.log(result.data);
                 this.setState({stories: result.data});
+                console.log("----");
+                console.log(this.state.stories[0].id);
                 
             });
             });
@@ -45,12 +47,20 @@ class StoryList extends Component{
     render(){
         return(
             <div> 
-                {/* {this.state.stories.map(story => (
-                    <UserStoryTile 
-                        key={this.state.story.id}
-                        storyId={this.state.story.id}
-                    />
-                ))} */}
+                {this.state.stories.map(story => (             
+                        
+                        <nav className="navbar navbar-top navbar-light bg-light">
+                             
+                            <Link to={"/choosecontenttype/" + story.id}>
+                            <img className="thumb"  alt={story.Moments[0].id} src={story.Moments[0].moment}/>
+                                    {story.title} 
+                            <a className="navbar-brand"></a>
+                            </Link>
+
+                            </nav>
+                    
+                ))}
+                
             </div>
         );
     }
