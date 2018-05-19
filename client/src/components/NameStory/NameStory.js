@@ -9,8 +9,8 @@ class NameStory extends Component{
       this.state = {
           title: '',
           story: {},
-          hidden: true,
-          redirect: false
+          hidden: true
+          // redirect: false
       };
   }
 
@@ -45,7 +45,7 @@ class NameStory extends Component{
         this.setState({title: result.data.title, story: result.data, hidden: false});
         console.log("promise completed");
        
-        window.location.href="/choosecontenttype/" + this.state.story.id;
+        // window.location.href="/choosecontenttype/" + this.state.story.id;
 
         console.log("did anything happen?");
 
@@ -68,28 +68,41 @@ class NameStory extends Component{
 render() {
 
   return (
-    <div>
-      <form>
-        <div className="form-group">
+<div>
+    <form>
+    <div className="form-group">
       
-          <label htmlFor="storyName">What's the Name of your Story?</label>
-            <input 
-              type="text"
-              className="form-control"
-              value={this.state.title}
-              onChange={evt => this.updateInput(evt)}
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            className="btn btn-primary mb-2"
-            id="submit-btn"
-            onClick={this.onClick}
-          >
-            Begin
-          </button>
-      
+      <label htmlFor="storyName">What's the Name of your Story?</label>
+      <input 
+        type="text"
+        className="form-control"
+        // id="story-name"
+        // placeholder="Story Name"
+        value={this.state.title}
+        onChange={evt => this.updateInput(evt)}
+        // onChange={this.handledInputChange}
+      />
+    </div>
+    
+      <button 
+        type="submit" 
+        className="btn btn-primary mb-2"
+        id="submit-btn"
+        onClick={this.onClick}
+      >
+      {/* <Link to={"/choosecontenttype/" + this.state.story.id}>
+      Begin
+      </Link> */}
+      Begin
+      </button>
+      <button
+        className= {this.state.hidden ? 'hidden btn btn-success mb-2' : 'btn btn-success mb-2'}
+      >
+        <Link to={"/choosecontenttype/" + this.state.story.id}>
+        
+        Add Moment
+        </Link>
+      </button>
       </form>
     </div>
 
