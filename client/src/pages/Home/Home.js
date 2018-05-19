@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import TitleBar from "../../components/TitleBar";
-import UserTile from "../../components/UserTile";
-//import UserList from "../../image.json";
 import UserStoryTile from "../../components/UserStoryTile"
-import StoryList from "../../components/StoryList"
 import axios from 'axios'
 const thispage="home"
 
@@ -16,7 +13,6 @@ class App extends Component {
     axios.get("/api/event/all")
       .then(events => {
         console.log(events.data)
-        console.log(events.data[0].Moments[0].moment)
         this.setState({storyList:events.data})
       })
   }
