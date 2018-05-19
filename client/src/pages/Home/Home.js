@@ -16,11 +16,11 @@ class App extends Component {
     axios.get("/api/event/all")
       .then(events => {
         console.log(events.data)
-        console.log(events.data[0].Moments[0].moment)
+        // console.log(events.data[0].Moments[0].moment)
         this.setState({storyList:events.data})
       })
   }
-  componentWillMount(){
+  componentDidMount(){
     this.getStories()
   }
   render() {
