@@ -42,7 +42,6 @@ class App extends Component {
             origin={thispage}
           />
         ))}
-        <StoryList />
       </div>
     );
   }
