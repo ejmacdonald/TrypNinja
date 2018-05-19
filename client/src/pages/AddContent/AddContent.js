@@ -21,7 +21,7 @@ class AddContent extends Component {
         <h5> or Continue one of these...</h5>
         <br></br>
 
-        {StoryListJson.map((user) => (
+        {/* {StoryListJson.map((user) => (
             <UserStoryTile
               id={user.id}
               title={user.title}
@@ -29,7 +29,7 @@ class AddContent extends Component {
               imageClick={this.imageClick}
               origin={thispage}
             />
-          ))}
+          ))} */}
         <StoryList />
       </div>
     );

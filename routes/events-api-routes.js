@@ -34,11 +34,13 @@ var db = require("../models");
       console.log("storyList db call");
       db.Event.findAll({
         where: {
-          UserId: req.params.id,
-          isOpen: 1
-        }
+          UserId: req.params.id
+        },
+        order: [['updatedAt', 'DESC']],
+        include: [db.Moment]
       }).then(function(dbEvent){
         console.log(dbEvent);
+        res.json(dbEvent);
       });
   });
 

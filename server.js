@@ -22,7 +22,7 @@ app.use("/S3", html.router);
 // Send every request to the React app
 // Define any API routes before this runs
 
-db.sequelize.sync({ force: true }).then(function()
+db.sequelize.sync({ force: false }).then(function()
 {
   app.listen(PORT, function() {
     console.log(`🌎 ==> Server now on port ${PORT}!`);

@@ -56,6 +56,13 @@ class AddPhotoS3 extends Component{
         return (
           <div>
           <form encType="multipart/form-data" onSubmit={this.onSubmit}>
+                
+            <input
+              type="file"
+              name="selectedFile"
+              onChange={this.onChange}
+            />
+            <br />
             <input
               type="text"
               name="caption"
@@ -63,12 +70,7 @@ class AddPhotoS3 extends Component{
               value={caption}
               onChange={this.onChange}
             />
-                              
-            <input
-              type="file"
-              name="selectedFile"
-              onChange={this.onChange}
-            />
+            <br />
             <button type="submit">Submit</button>
           </form>
 

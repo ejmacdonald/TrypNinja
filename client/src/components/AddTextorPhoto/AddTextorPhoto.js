@@ -25,7 +25,7 @@ const AddTextorPhoto = (props) => (
             </label>
         </div>
 
-        <input id="file-input" type="file" accept="image/*"/>
+        {/* <input id="file-input" type="file" accept="image/*"/> */}
     </div>
 
 
