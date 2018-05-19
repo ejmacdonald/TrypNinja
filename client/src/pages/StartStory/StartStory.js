@@ -8,11 +8,14 @@ class App extends Component {
     return (
       <div className="wrapper">
         <TitleBar />
-        <NameStory />
+        <NameStory 
+          nextPath="/choosecontenttype" 
+        />
       
       </div>
     );
   }
 }
+
 
 export default App;
