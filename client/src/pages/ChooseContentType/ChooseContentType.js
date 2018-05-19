@@ -30,6 +30,7 @@ class ChooseContentType extends Component {
         <div className="wrapper">
             <TitleBar/>
             <AddTextorPhoto />
+            <br></br>
             <p>Story Name: {this.state.story.title}</p>
             <AddPhotoS3 
               key={this.state.story.id}
@@ -38,7 +39,9 @@ class ChooseContentType extends Component {
             />
         </div>
         <div>
-          <EndButton />
+          <EndButton 
+            storyId={this.state.story.id}
+          />
         </div>
       </div>
 

@@ -5,8 +5,10 @@ import {Link} from "react-router-dom";
 const AddTextorPhoto = (props) => (
 <div>
     <p>What are you adding to your story?</p>
+
+    <br></br>
     
-    <div class="image-upload">
+    <div class="container">
         <div className="small-tile">
             <Link
                 to="/addtext"

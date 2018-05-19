@@ -12,7 +12,7 @@ export default class extends React.Component {
 
         <div className="wrapper">
 
-        <TitleBar/>
+        {/* <TitleBar/> */}
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={150}

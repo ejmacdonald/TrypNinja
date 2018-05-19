@@ -84,7 +84,7 @@ var db = require("../models");
   });
 
   // PUT route for updating events
-  router.put("/nothing/:id", function(req, res) {
+  router.put("/:id", function(req, res) {
     console.log("in nothing route");
     console.log("req.body: " + req.body);
     console.log("req.params.id: " + req.params.id);
