@@ -52,7 +52,7 @@ class StoryList extends Component{
                         <nav className="navbar navbar-top navbar-light bg-light">
                              
                             <Link to={"/choosecontenttype/" + story.id}>
-                            <img className="thumb"  alt={story.Moments[0].id} src={story.Moments[0].moment}/>
+                            <img className="thumb" src={story.Moments[0] ? story.Moments[0].moment : "https://www.calgaryhumane.ca/wp-content/uploads/2018/02/Coming-soon.jpg" }/>
                                     {story.title} 
                             <a className="navbar-brand"></a>
                             </Link>
