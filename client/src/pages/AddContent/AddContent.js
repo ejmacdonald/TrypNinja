@@ -4,11 +4,12 @@ import UserTile from "../../components/UserTile";
 import Start from "../../components/Start";
 import CreateNew from "../../components/CreateNew";
 import UserStoryTile from "../../components/UserStoryTile";
-import StoryList from "../../stories.json";
+import StoryListJson from "../../stories.json";
+import StoryList from "../../components/StoryList";
 
 const thispage="addContent";
 
-class App extends Component {
+class AddContent extends Component {
   render() {
     return (
       <div className="wrapper">
@@ -20,7 +21,7 @@ class App extends Component {
         <h5> or Continue one of these...</h5>
         <br></br>
 
-        {StoryList.map((user) => (
+        {StoryListJson.map((user) => (
             <UserStoryTile
               id={user.id}
               title={user.title}
@@ -29,10 +30,10 @@ class App extends Component {
               origin={thispage}
             />
           ))}
-      
+        <StoryList />
       </div>
     );
   }
 }
 
-export default App;
+export default AddContent;
