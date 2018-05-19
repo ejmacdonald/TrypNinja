@@ -9,7 +9,7 @@ var db = require("../models");
   console.log("in events-api-routes");
   
   // GET route for getting all of the posts
-  router.get("/api/events", function(req, res) {
+  router.get("/all", function(req, res) {
     console.log("in GET FINDALL event");
     var query = {};
     if (req.query.user_id) {
@@ -20,7 +20,9 @@ var db = require("../models");
     // In this case, just db.User
     db.Event.findAll({
       where: query,
-      include: [db.User]
+      include: [db.User, db.Moment],
+      limit: 20,
+      order: [['updatedAt', 'DESC']]
     }).then(function(dbEvent) {
       res.json(dbEvent);
     });
@@ -32,17 +34,19 @@ var db = require("../models");
       console.log("storyList db call");
       db.Event.findAll({
         where: {
-          UserId: req.params.id,
-          isOpen: 1
-        }
+          UserId: req.params.id
+        },
+        order: [['updatedAt', 'DESC']],
+        include: [db.Moment]
       }).then(function(dbEvent){
         console.log(dbEvent);
+        res.json(dbEvent);
       });
   });
 
 
   // Get route for retrieving a single event
-  router.get("/event/:id", function(req, res) {
+  router.get("/:id", function(req, res) {
     console.log("in GET FINDONE event");
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join

@@ -21,8 +21,8 @@ const UserStoryTile = (props) => (
       to="/choosecontenttype"
       className={window.location.pathname==="/choosecontenttype" ? "nav-link active" : "nav-link"}
     >
-      <img className="thumb"  alt={props.id} src={require("../../images/" + props.src)}/>
-              {props.title} 
+      <img className="thumb"  alt={props.id} src={props.src}/>
+              {props.title} by {props.userName}
       <a className="navbar-brand"></a>
     </Link>}
 
