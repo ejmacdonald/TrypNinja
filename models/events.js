@@ -5,6 +5,12 @@ module.exports = function(sequelize, DataTypes)
     title: 
     {
         type: DataTypes.STRING
+    },
+    
+    isOpen:
+    {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
     }
 });
 
