@@ -1,10 +1,24 @@
 import React from 'react';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+//Material UI code
+// import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
+import MobileStepper from '@material-ui/core/MobileStepper';
+//Material UI: do we need this? What is it?
+// import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import KeyboardArrowLeft from '@material-ui/core/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/core/KeyboardArrowRight';
 import Story from "../../story1.json";
 import TitleBar from "../../components/TitleBar";
 
-let storyArray = Story;
+const momentSwipe = [
+  {
+    label: 'Picture 1',
+    imgPath: Story.[0]
+  }
+]
+
+// let storyArray = Story;
 
 export default class extends React.Component {
     render() {
