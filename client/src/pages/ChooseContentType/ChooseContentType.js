@@ -24,7 +24,6 @@ class ChooseContentType extends Component {
       });
   }
   
-  
   render() {
     return (
       <div>
