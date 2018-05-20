@@ -23,9 +23,9 @@ class EndButton extends Component{
 
         axios.put('/api/event/' + ID, formData)
         .then((result) => {
-            // access results...
         console.log("promise completed");
         console.log(result);
+        window.location.href="/";
       });
     }
 
