@@ -1,16 +1,16 @@
 import React from 'react';
 //Material UI code
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
-//Material UI: do we need this? What is it?
-// import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/core/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/core/KeyboardArrowRight';
 import Story from "../../story1.json";
 import TitleBar from "../../components/TitleBar";
 import { Typography } from '@material-ui/core';
+import SwipeableViews from 'react-swipeable-views';
 
 const momentSwipe = [
   {
