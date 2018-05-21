@@ -14,11 +14,11 @@ import TitleBar from "../../components/TitleBar";
 const swipePix = [
   {
     label: 'Bad Robot? Bad Logo!',
-    imgPath: './images/bad-logo.png',
+    imgPath: '../../images/bad-logo.png',
   },
   {
     label: 'Doge Numero Uno',
-    imgPath: 'src/images/dog1.jpg',
+    imgPath: '../../images/dog1.jpg',
   },
   {
     label: 'Picture 3',
