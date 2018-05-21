@@ -16,7 +16,7 @@ class ChooseContentType extends Component {
     console.log("logging params");
     console.log(this.props.match.params);
     let id = this.props.match.params.id;
-    axios.get('/api/event/event/' + id)
+    axios.get('/api/event/' + id)
       .then((result)=> {
         this.setState({story: result.data});
         console.log(result);
