@@ -13,24 +13,24 @@ import TitleBar from "../../components/TitleBar";
 
 const swipePix = [
   {
-    label: 'Picture 1',
-    imgPath: '/images/bad-logo.png',
+    label: 'Bad Robot? Bad Logo!',
+    imgPath: './images/bad-logo.png',
   },
   {
-    label: 'Picture 2',
-    imgPath: '/images/dog1.jpg',
+    label: 'Doge Numero Uno',
+    imgPath: 'src/images/dog1.jpg',
   },
   {
     label: 'Picture 3',
-    imgPath: '/images/dog2.jpg',
+    imgPath: '../images/dog2.jpg',
   },
   {
     label: 'Picture 4',
-    imgPath: '/images/dog3.jpg',
+    imgPath: '../images/dog3.jpg',
   },
   {
     label: 'Picture 5',
-    imgPath: '/images/dog5.jpg',
+    imgPath: '../images/dog5.jpg',
   },
 ];
 
