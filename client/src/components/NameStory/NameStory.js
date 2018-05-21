@@ -9,8 +9,8 @@ class NameStory extends Component{
       this.state = {
           title: '',
           story: {},
-          hidden: true
-          // redirect: false
+          hidden: true,
+          placeholder: 'Story Name'
       };
   }
 
@@ -18,6 +18,14 @@ class NameStory extends Component{
     e.preventDefault();
 
     const { title  } = this.state;
+
+    console.log("title: " + title);
+
+    if (title === "") {
+      console.log("that's no good, you need a title!!");
+      this.setState({placeholder: "Hey!!!  name your STORY"});
+    } else {
+
     let formData = new FormData();
     let token = sessionStorage.getItem("TNToken");
 
@@ -45,12 +53,13 @@ class NameStory extends Component{
         this.setState({title: result.data.title, story: result.data, hidden: false});
         console.log("promise completed");
        
-        // window.location.href="/choosecontenttype/" + this.state.story.id;
+        window.location.href="/choosecontenttype/" + this.state.story.id;
 
         console.log("did anything happen?");
 
       });
     });
+  }
   }
 
   updateInput (e) {
@@ -68,45 +77,29 @@ class NameStory extends Component{
 render() {
 
   return (
-<div>
-    <form>
-    <div className="form-group">
-      
-      <label htmlFor="storyName">What's the Name of your Story?</label>
-      <input 
-        type="text"
-        className="form-control"
-        // id="story-name"
-        // placeholder="Story Name"
-        value={this.state.title}
-        onChange={evt => this.updateInput(evt)}
-        // onChange={this.handledInputChange}
-      />
-    </div>
+    <div>
+      <form>
+        <div className="form-group">
+          <label htmlFor="storyName">What's the Name of your Story?</label>
+            <input 
+              type="text"
+              className="form-control"
+              value={this.state.title}
+              onChange={evt => this.updateInput(evt)}
+              placeholder={this.state.placeholder}
+          />
+        </div>
     
-      <button 
-        type="submit" 
-        className="btn btn-primary mb-2"
-        id="submit-btn"
-        onClick={this.onClick}
-      >
-      {/* <Link to={"/choosecontenttype/" + this.state.story.id}>
-      Begin
-      </Link> */}
-      Begin
-      </button>
-      <button
-        className= {this.state.hidden ? 'hidden btn btn-success mb-2' : 'btn btn-success mb-2'}
-      >
-        <Link to={"/choosecontenttype/" + this.state.story.id}>
-        
-        Add Moment
-        </Link>
-      </button>
+        <button 
+          type="submit" 
+          className="btn btn-primary mb-2"
+          id="submit-btn"
+          onClick={this.onClick}
+        >
+          Begin
+        </button>
       </form>
     </div>
-
-    
   );
 }
 

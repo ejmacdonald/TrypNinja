@@ -11,7 +11,6 @@ class App extends Component {
         <NameStory 
           nextPath="/choosecontenttype" 
         />
-      
       </div>
     );
   }
