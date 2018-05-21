@@ -10,7 +10,7 @@ class NameStory extends Component{
           title: '',
           story: {},
           hidden: true,
-          redirect: false
+          placeholder: 'Story Name'
       };
   }
 
@@ -18,6 +18,14 @@ class NameStory extends Component{
     e.preventDefault();
 
     const { title  } = this.state;
+
+    console.log("title: " + title);
+
+    if (title === "") {
+      console.log("that's no good, you need a title!!");
+      this.setState({placeholder: "Hey!!!  name your STORY"});
+    } else {
+
     let formData = new FormData();
     let token = sessionStorage.getItem("TNToken");
 
@@ -52,6 +60,7 @@ class NameStory extends Component{
       });
     });
   }
+  }
 
   updateInput (e) {
     console.log("inside the update function");
@@ -71,29 +80,26 @@ render() {
     <div>
       <form>
         <div className="form-group">
-      
           <label htmlFor="storyName">What's the Name of your Story?</label>
             <input 
               type="text"
               className="form-control"
               value={this.state.title}
               onChange={evt => this.updateInput(evt)}
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            className="btn btn-primary mb-2"
-            id="submit-btn"
-            onClick={this.onClick}
-          >
-            Begin
-          </button>
-      
+              placeholder={this.state.placeholder}
+          />
+        </div>
+    
+        <button 
+          type="submit" 
+          className="btn btn-primary mb-2"
+          id="submit-btn"
+          onClick={this.onClick}
+        >
+          Begin
+        </button>
       </form>
     </div>
-
-    
   );
 }
 
