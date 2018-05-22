@@ -18,7 +18,7 @@ const App = () => (
         <Route exact path="/choosecontenttype/:id" component={ChooseContentType} />
         <Route exact path="/addtext" component={TextStory} />
         <Route exact path="/user" component={UserPage} />
-        <Route exact path="/story" component={Story} />
+        <Route exact path="/story/:id" component={Story} />
 
       {/* </Switch> */}
     </div>
