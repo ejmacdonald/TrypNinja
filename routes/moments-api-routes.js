@@ -71,4 +71,20 @@ var db = require("../models");
     });
   });
 
+    //route to get the open events for a user and first moment for thumbnail display
+  //using on StoryList.js
+  router.get("/moment/:id", function(req, res){
+    console.log("moment db call");
+    db.Moment.findAll({
+      where: {
+        EventId: req.params.id
+      },
+      order: [['updatedAt', 'DESC']],
+      
+    }).then(function(dbEvent){
+      console.log(dbEvent);
+      res.json(dbEvent);
+    });
+});
+
   module.exports = {router, db};

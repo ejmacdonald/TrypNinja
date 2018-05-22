@@ -8,20 +8,20 @@ const AddTextorPhoto = (props) => (
 
     <br></br>
     
-    <div class="container">
+    <div className="container">
         <div className="small-tile">
             <Link
                 to="/addtext"
                 className={window.location.pathname==="/addtext" ? "nav-link active" : "nav-link"}
             >           
-            <i class="fas fa-pencil-alt fa-5x add-pad"></i>
+            <i className="fas fa-pencil-alt fa-5x add-pad"></i>
             
             </Link>
         </div>
 
         <div className="small-tile">
-            <label for="file-input">
-                <i class="fas fa-camera fa-5x add-pad"></i>
+            <label htmlFor="file-input">
+                <i className="fas fa-camera fa-5x add-pad"></i>
             </label>
         </div>
 

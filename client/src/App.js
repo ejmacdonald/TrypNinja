@@ -20,7 +20,6 @@ const App = () => (
         <Route exact path="/addtext" component={TextStory} />
         <Route exact path="/user" component={UserPage} />
 
-
       {/* </Switch> */}
     </div>
   </Router>

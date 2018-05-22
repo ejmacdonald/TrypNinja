@@ -19,7 +19,7 @@ var db = require("../models");
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.User
     db.Event.findAll({
-      include: [db.User, {model:db.Moment, where: {moment: {$ne: null}}}],
+      include: [{model:db.User, attributes: ['userName', 'id']}, {model:db.Moment, where: {moment: {$ne: null}}, attributes:['moment']}],
       limit: 20,
       order: [['updatedAt', 'DESC']]
     }).then(function(dbEvent) {
