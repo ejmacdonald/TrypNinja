@@ -16,12 +16,21 @@ class ChooseContentType extends Component {
     console.log("logging params");
     console.log(this.props.match.params);
     let id = this.props.match.params.id;
+
     console.log("id: " + id);
-    axios.get('/api/event/event/' + id)
-      .then((result)=> {
-        this.setState({story: result.data});
-        console.log("story name: " + result.data);
-      });
+    let token = sessionStorage.getItem("TNToken")
+    axios.get('/api/user/'+token)
+      .then(user=>{
+        console.log(user.data)
+        axios.get('/api/event/event/' + id)
+          .then((result) => {
+            if (result.data.UserId===user.data.id){
+              this.setState({ story: result.data });
+              console.log("story name: " + result.data);
+              console.log(result.data)
+            }
+          });
+      })
   }
   
   render() {
