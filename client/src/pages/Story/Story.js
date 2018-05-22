@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import {Link} from "react-router-dom";
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +13,7 @@ import SwipeableViews from 'react-swipeable-views';
 const axios = require('axios');
 
 let swipePix = [];
+
 //   {
 //     label: 'Bad Robot? Bad Logo!',
 //     imgPath: '../../images/bad-logo.png',
@@ -57,7 +59,7 @@ const styles = theme => ({
 
 class SwipeableTextMobileStepper extends React.Component {
   state = {
-    activeStep: 0,
+    activeStep: 0
   
   };
 
@@ -71,6 +73,7 @@ class SwipeableTextMobileStepper extends React.Component {
         console.log(result.data);
         swipePix=result.data;
       });
+    
   }
 
   handleNext = () => {
@@ -98,8 +101,13 @@ class SwipeableTextMobileStepper extends React.Component {
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          {/* <Typography>{swipePix[activeStep].caption}</Typography> */}
+          <Link to="/">
+            <i class="material-icons">home</i>
+          </Link>
+
+          <Typography>{/* {swipePix[activeStep].caption} */}</Typography>
         </Paper>
+
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.activeStep}
