@@ -5,6 +5,7 @@ import TitleBar from "../../components/TitleBar";
 import EndButton from "../../components/EndButton";
 import AddPhotoS3 from "../../components/AddPhotoS3";
 import AddTextorPhoto from "../../components/AddTextorPhoto";
+import CameraButton from "../../components/PhotoButton";
 
 class ChooseContentType extends Component {
   state = {
@@ -37,14 +38,18 @@ class ChooseContentType extends Component {
       <div>
         <div className="wrapper">
             <TitleBar/>
-            <AddTextorPhoto />
+            {/* <AddTextorPhoto /> */}
             <br></br>
             <p>Story Name: {this.state.story.title}</p>
             <AddPhotoS3 
               key={this.state.story.id}
               storyId={this.state.story.id}
               title={this.state.story.title}
-            />
+              
+            >
+            
+            </AddPhotoS3>
+            
         </div>
         <div>
           <EndButton 

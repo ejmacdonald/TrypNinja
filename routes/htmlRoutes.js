@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 var router = express.Router();
 var AWS = require('aws-sdk');
@@ -7,8 +8,8 @@ var db = require("../models");
 
 //AWS
 //aws keys
-var accessKeyId = process.env.AWS_ACCESS_KEY || "AKIAJSQNCM5K6YOIRMPA";
-var secretAccessKey = process.env.AWS_SECRET_KEY || "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";
+var accessKeyId = process.env.aws_access_key_id;
+var secretAccessKey = process.env.aws_secret_access_key;
 AWS.config.update({
   accessKeyId: accessKeyId,
   secretAccessKey: secretAccessKey

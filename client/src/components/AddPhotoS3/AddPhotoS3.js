@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import CameraButton from "../PhotoButton";
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
 
 class AddPhotoS3 extends Component{
     constructor(props){
@@ -60,8 +77,16 @@ class AddPhotoS3 extends Component{
             <input
               type="file"
               name="selectedFile"
+              id="file-input"
               onChange={this.onChange}
+              className=""
             />
+            {/* <CameraButton 
+            type="file"
+            name="selectedFile"
+            id="file-input"
+            onChange={this.onChange}/> */}
+            <br />
             <br />
             <input
               type="text"
@@ -71,7 +96,8 @@ class AddPhotoS3 extends Component{
               onChange={this.onChange}
             />
             <br />
-            <button type="submit">Submit</button>
+            <br />
+            <button type="submit" className="btn btn-success">Submit</button>
           </form>
 
           
