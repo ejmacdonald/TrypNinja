@@ -5,15 +5,13 @@ import AddButton from "../AddButton";
 
 const UserStoryTile = (props) => (
 
-
 <div>
     <nav className="navbar navbar-top navbar-light bg-light">
-    {(props.origin === "userPage") ? 
-      <Link
-        to="/story"
-        className={window.location.pathname==="/story" ? "nav-link active" : "nav-link"}
+    {(props.origin === "home") ? 
+      <
+        Link to={'/story/' + props.id}
       >
-        <img className="thumb"  alt={props.id} src={require("../../images/" + props.src)}/>
+        <img className="thumb"  alt={props.id} src={props.src}/>
                 {props.title} 
         <a className="navbar-brand"></a>
       </Link>
@@ -29,6 +27,7 @@ const UserStoryTile = (props) => (
     </nav>
   </div>
 );
+
 
 
 export default UserStoryTile;
