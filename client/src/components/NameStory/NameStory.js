@@ -73,7 +73,6 @@ class NameStory extends Component{
   };
 
 
-
 render() {
 
   return (
