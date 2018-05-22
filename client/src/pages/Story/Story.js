@@ -60,6 +60,8 @@ class SwipeableTextMobileStepper extends React.Component {
     activeStep: 0,
   };
 
+  
+
   handleNext = () => {
     this.setState(prevState => ({
       activeStep: prevState.activeStep + 1,
