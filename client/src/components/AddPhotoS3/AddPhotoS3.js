@@ -17,6 +17,12 @@ const styles = theme => ({
   input: {
     display: 'none',
   },
+  // img: {
+  //   height: 255,
+  //   maxWidth: 400,
+  //   overflow: 'hidden',
+  //   width: '100%',
+  // },
 });
 
 class AddPhotoS3 extends Component{
