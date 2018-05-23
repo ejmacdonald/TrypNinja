@@ -1,4 +1,4 @@
-## TrypNinja  <img src="client\src\logo.png" alt="trypninja" width="15%"/>  
+## TrypNinja  <img src="client\src\logo.png" alt="trypninja" width="10%"/>  
 
 
   
