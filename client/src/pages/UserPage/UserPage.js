@@ -6,6 +6,7 @@ import { Grid, Card, CardContent, CardMedia, Typography } from "@material-ui/cor
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import StoryList from "../../components/StoryList"
+import FAB from "../../components/FloatingActionButton"
 const thispage = "user"
 
 const styles = {
@@ -57,6 +58,7 @@ class UserPage extends Component {
             </Grid>
           </Grid>
           {this.state.render ? <StoryList id={this.state.user.id} notEmpty={true}/> : null}
+          <FAB />
       </div>
     )
   }

@@ -13,7 +13,7 @@ const App = () => [
   <Router>
     <div>
     <TitleBar/>
-    <div className="container">
+    <div className="wrapper container">
       {/* <Switch> */}
         <Route exact path="/" component={Home} />
         <Route exact path="/add" component={AddContent} />
