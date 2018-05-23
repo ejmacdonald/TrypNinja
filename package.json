@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "trypninja",
   "main": "server.js",
+  "engines": {
+    "yarn": "1.7.0"
+  },
   "scripts": {
     "server": "node server.js",
     "client": "node scripts/start-client.js",
