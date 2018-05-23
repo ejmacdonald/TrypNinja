@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {Link} from "react-router-dom";
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -9,11 +8,8 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
-
-const axios = require('axios');
-
-let swipePix = [];
-
+import TitleBar from "../../components/TitleBar";
+import axios from 'axios'
 const styles = theme => ({
   root: {
     maxWidth: 400,
@@ -37,10 +33,10 @@ const styles = theme => ({
 
 class SwipeableTextMobileStepper extends React.Component {
   state = {
-    activeStep: 0
-  
+    activeStep: 0,
+    swipePix:[],
+    render:false
   };
-
   componentDidMount(){
     console.log("logging params");
     console.log(this.props.match.params);
@@ -49,11 +45,9 @@ class SwipeableTextMobileStepper extends React.Component {
     axios.get('/api/moment/moment/' + id)
       .then((result)=> {
         console.log(result.data);
-        swipePix=result.data;
+        this.setState({swipePix:result.data, render:true});
       });
-    
   }
-
   handleNext = () => {
     this.setState(prevState => ({
       activeStep: prevState.activeStep + 1,
@@ -74,27 +68,21 @@ class SwipeableTextMobileStepper extends React.Component {
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
 
-    const maxSteps = swipePix.length;
+    const maxSteps = this.state.swipePix.length;
 
-    return (
+    return (this.state.render ? 
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Link to="/">
-            <i class="material-icons">home</i>
-          </Link>
+          <Typography>{this.state.swipePix[activeStep].caption}</Typography>
         </Paper>
-
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.activeStep}
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {swipePix.map(step => (
-            <figure>
-            <img key={step.caption} className={classes.img} src={step.moment} alt={step.caption} />
-            <figcaption>{step.caption}</figcaption>
-            </figure>
+          {this.state.swipePix.map(step => (
+            <img key={step.label} className={classes.img} src={step.moment} alt={step.label} />
           ))}
         </SwipeableViews>
         <MobileStepper
@@ -116,7 +104,8 @@ class SwipeableTextMobileStepper extends React.Component {
             </Button>
           }
         />
-      </div>
+      </div> 
+      : null
     );
   }
 }
