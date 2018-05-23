@@ -1,4 +1,3 @@
-#TrypNinja
 <img src="client\src\logo.png" alt="trypninja" width="20%"/>  
 
 
@@ -10,13 +9,13 @@ TrypNinja is an application which allows the user to create a story from a mobil
 #### Technologies Used:<hr/>
 This application has been built as a full-stack application. The React framework was used to render a dynamic front-end. The back-end utilizes Node and a MySQL database for housing user accounts and their stories. The application makes use of express for middleware and Sequelize as an ORM for the database. Images are stored using the Amazon S3 service.
  
-###The Need Our App Fills<hr/>
+### The Need Our App Fills<hr/>
 TrypNinja fills the gap in existing social media sites by allowing users to create a COMPLETE story and publishing it for others to see.  Stories are comprised photos and text.
 
-###How to Use the App<hr/>
+### How to Use the App<hr/>
 1. Step 1
 
-###Potential Future Features<hr/>
+### Potential Future Features<hr/>
 * Friends – this concept would allow people to share stories ONLY with their own friends or make their stories “public”.  Conversely, they would have the option of only seeing stories from friends.  For now all stories are Public.
 * User Profile – this would be a screen that would allow the user to see their own complete stories and in-progress stories (and delete them).  They could also add personal info, like insta and snap links.
 * Share on Facebook.  This feature is the best chance of this getting wide use.  If a user shared their story on Facebook, for example, we would post a message to their Facebook account with a link to their story.  A new person would need to log in to see their story.  
