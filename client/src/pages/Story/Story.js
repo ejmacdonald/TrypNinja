@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import {Link} from "react-router-dom";
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -12,27 +13,6 @@ import SwipeableViews from 'react-swipeable-views';
 const axios = require('axios');
 
 let swipePix = [];
-//   {
-//     label: 'Bad Robot? Bad Logo!',
-//     imgPath: '../../images/bad-logo.png',
-//   },
-//   {
-//     label: 'Doge Numero Uno',
-//     imgPath: '../../images/dog1.jpg',
-//   },
-//   {
-//     label: 'Picture 3',
-//     imgPath: '../images/dog2.jpg',
-//   },
-//   {
-//     label: 'Picture 4',
-//     imgPath: '../images/dog3.jpg',
-//   },
-//   {
-//     label: 'Picture 5',
-//     imgPath: '../images/dog5.jpg',
-//   },
-// ];
 
 const styles = theme => ({
   root: {
@@ -57,7 +37,7 @@ const styles = theme => ({
 
 class SwipeableTextMobileStepper extends React.Component {
   state = {
-    activeStep: 0,
+    activeStep: 0
   
   };
 
@@ -71,6 +51,7 @@ class SwipeableTextMobileStepper extends React.Component {
         console.log(result.data);
         swipePix=result.data;
       });
+    
   }
 
   handleNext = () => {
@@ -98,8 +79,11 @@ class SwipeableTextMobileStepper extends React.Component {
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          {/* <Typography>{swipePix[activeStep].caption}</Typography> */}
+          <Link to="/">
+            <i class="material-icons">home</i>
+          </Link>
         </Paper>
+
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.activeStep}
@@ -107,7 +91,10 @@ class SwipeableTextMobileStepper extends React.Component {
           enableMouseEvents
         >
           {swipePix.map(step => (
+            <figure>
             <img key={step.caption} className={classes.img} src={step.moment} alt={step.caption} />
+            <figcaption>{step.caption}</figcaption>
+            </figure>
           ))}
         </SwipeableViews>
         <MobileStepper
@@ -140,75 +127,3 @@ SwipeableTextMobileStepper.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(SwipeableTextMobileStepper);
-
-// import React from 'react';
-// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-// import 'pure-react-carousel/dist/react-carousel.es.css';
-// import Story from "../../story1.json";
-// import TitleBar from "../../components/TitleBar";
-
-// let storyArray = Story;
-
-// export default class extends React.Component {
-//     render() {
-//       return (
-
-//         <div className="wrapper">
-
-//         {/* <TitleBar/> */}
-//         <CarouselProvider
-//           naturalSlideWidth={100}
-//           naturalSlideHeight={150}
-//           totalSlides={3}
-//           touchEnabled="true"
-//           isPlaying="false"
-//           interval="10000000"
-//         >        
-//           <Slider>
-//             <Slide index={0}>First
-//                 <div class="image-div">
-//                 <img class="story-img" alt="img" src={require("../../images/eric/" + storyArray[0].image)} />
-//                 </div>
-//             </Slide>
-//             <Slide index={1}>I am the second Slide.
-//                 <div class="image-div">
-//                 <img class="story-img" alt="img" src={require("../../images/eric/" + storyArray[1].image)} />
-//                 </div>
-//             </Slide>
-//             <Slide index={2}>I am the third Slide.
-//                 <div class="image-div">
-//                 <img class="story-img" alt="img" src={require("../../images/eric/" + storyArray[2].image)} /> 
-//                 </div>           
-//             </Slide>
-//           </Slider>
-//           <ButtonBack>Back</ButtonBack>
-//           <ButtonNext>Next</ButtonNext>
-//         </CarouselProvider>
-//         </div>
-//       );
-//     }
-//   }
-
-
-// // class DemoCarousel extends Component {
-// //     render() {
-// //         return (
-// //             <Carousel showArrows={true}>
-// //                 <div>
-// //                     <img alt="img" src={require("../../images/moab/" + storyArray[0].image)} />
-// //                     <p className="legend">Photo 1</p>
-// //                 </div>
-// //                 <div>
-// //                     <img alt="img" src={require("../../images/moab/" + storyArray[1].image)} />
-// //                     <p className="legend">Photo 2</p>
-// //                 </div>
-// //                 <div>
-// //                     <img alt="img" src={require("../../images/moab/" + storyArray[2].image)} />
-// //                     <p className="legend">Photo 3</p>
-// //                 </div>
-// //             </Carousel>
-// //         );
-// //     }
-// // };
- 
-// // ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));
