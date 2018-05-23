@@ -34,15 +34,21 @@ router.post("/object", (req,res)=>{
   .then((user, created)=>{
     const token = hash(profile)
     db.User.update({token: token}, {where: dbObject})
-    console.log(`token: ${token}`)
-    res.send(token.toString())
+    console.log(user[0].dataValues)
+    res.send({id: user[0].dataValues.id, token: token.toString(), profileImg:user[0].dataValues.profileImg})
   })
   .catch(err=>console.log(err))
+})
+router.get("/id/:id", (req,res)=>{
+  db.User.find({where: {id: req.params.id}})
+    .then(user=>{
+      res.send(user)
+    })
 })
 
 router.get("/:token", (req,res)=>{
   console.log("Getting userID w/!!!");
-  db.User.find({attributes:['id','userName'], where:{token:req.params.token}})
+  db.User.find({attributes:['id','userName', 'profileImg'], where:{token:req.params.token}})
   .then(user=>{
     console.log("user request")
     res.send(user)

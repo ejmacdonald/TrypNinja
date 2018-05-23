@@ -1,40 +1,64 @@
 import React, { Component } from 'react';
 import TitleBar from "../../components/TitleBar";
-import UserProfile from "../../components/UserProfile";
-import UserStoryTile from "../../components/UserStoryTile";
-import Stories from "../../stories.json";
+import UserStoryTile from "../../components/UserStoryTile"
+import axios from 'axios'
+import { Grid, Card, CardContent, CardMedia, Typography } from "@material-ui/core"
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import StoryList from "../../components/StoryList"
+import FAB from "../../components/FloatingActionButton"
+const thispage = "user"
 
-const thispage="userPage";
-
-class App extends Component {
+class UserPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { storyList: [] }
+  }
+  getUser(){
+    let id = this.props.match.params.id
+    console.log(id)
+    axios.get(`/api/user/id/${id}`)
+    .then(user=>{
+      this.setState({user:user.data, render:true})
+    })
+  }
+  componentWillMount(){
+    this.getUser()
+  }
   render() {
+    const { classes } = this.props
     return (
       <div className="wrapper">
-        <TitleBar />
-        <UserProfile
-              id={"1"}
-              name={"Kevin"}
-              src={"kevin.png"}
-              quote={"A bad day on the course is better than a great day at work!"}
-              imageClick={this.imageClick}
-            />
-        <br></br>
-        My Stories
-
-        {Stories.map((user) => (
-            <UserStoryTile
-              id={user.id}
-              title={user.title}
-              src={user.image}
-              imageClick={this.imageClick}
-              origin={thispage}
-            />
-          ))}
-      
+        {this.state.render ? (
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
+            <img
+            width = "100%"
+            height = "100%"
+              src={this.state.user.profileImg + "?sz=300"}
+              title={this.state.user.userName}
+              />
+          </Grid>
+          <Grid item xs={6}>
+            <Typography gutterBottom variant="headline" component="h2">
+              {this.state.user.userName}
+            </Typography>
+            <Typography gutterBottom component="p">
+              {this.state.user.quote}
+            </Typography>
+          </Grid>
+          </Grid>)
+          : null}
+          {this.state.render ? <StoryList id={this.state.user.id} notEmpty={true}/> : null}
+          <FAB />
       </div>
-    );
+    )
   }
 }
 
 
-export default App;
+UserPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(null)(UserPage);

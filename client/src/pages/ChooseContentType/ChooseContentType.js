@@ -37,8 +37,6 @@ class ChooseContentType extends Component {
     return (
       <div>
         <div className="wrapper">
-            <TitleBar/>
-            {/* <AddTextorPhoto /> */}
             <br></br>
             <p>Story Name: {this.state.story.title}</p>
             <AddPhotoS3 

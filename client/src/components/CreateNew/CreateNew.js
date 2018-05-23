@@ -1,18 +1,13 @@
 import React from "react";
+import UserStoryTile from "../UserStoryTile"
 import {Link} from "react-router-dom";
 
 const CreateNew = (props) => (
-  <div id="new-story-btn">
-    <Link
-      to="/start"
-      className={window.location.pathname==="/start" ? "nav-link active" : "nav-link"}
-    >
-      <button type="button" className="btn btn-default btn-lg btn-start" aria-label="Left Align">
-        <i className="far fa-plus-square"></i> Start a New Story
-      </button>
-    </Link>
-  </div>
-
+      <UserStoryTile
+      title="Create a new story"
+      src="https://cdn.photographylife.com/wp-content/uploads/2010/09/Nikon-D7000.jpg"
+      link="/start"
+      />
 );
 
 export default CreateNew;

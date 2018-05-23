@@ -7,7 +7,9 @@ const Start = (props) => (
       <input type="text" className="form-control" id="story-name" placeholder="Story Name" />
     </div>
 
-    <button type="submit" className="btn btn-primary mb-2">Begin</button>
+    <button type="submit" className="btn btn-primary mb-2">Add a moment now</button>
+    <button type="button" className="btn btn-primary mb-2">Don't add a moment</button>
+    <button type="button" className="btn btn-primary mb-2">Cancel</button>
   </div>
 
 );
