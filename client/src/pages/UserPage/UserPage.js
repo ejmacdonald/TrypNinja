@@ -9,16 +9,6 @@ import StoryList from "../../components/StoryList"
 import FAB from "../../components/FloatingActionButton"
 const thispage = "user"
 
-const styles = {
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-};
-
 class UserPage extends Component {
   constructor(props) {
     super(props)
@@ -39,24 +29,26 @@ class UserPage extends Component {
     const { classes } = this.props
     return (
       <div className="wrapper">
+        {this.state.render ? (
         <Grid container spacing={24}>
-          <Grid item xs={12}>
-            {this.state.render ? (
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image={this.state.user.profileImg + "?sz=300"}
-                title={this.state.user.userName}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="headline" component="h2">
-                    {this.state.user.userName}
-                  </Typography>
-                 </CardContent>
-              </Card>)
-              : null}
-            </Grid>
+          <Grid item xs={6}>
+            <img
+            width = "100%"
+            height = "100%"
+              src={this.state.user.profileImg + "?sz=300"}
+              title={this.state.user.userName}
+              />
           </Grid>
+          <Grid item xs={6}>
+            <Typography gutterBottom variant="headline" component="h2">
+              {this.state.user.userName}
+            </Typography>
+            <Typography gutterBottom component="p">
+              {this.state.user.quote}
+            </Typography>
+          </Grid>
+          </Grid>)
+          : null}
           {this.state.render ? <StoryList id={this.state.user.id} notEmpty={true}/> : null}
           <FAB />
       </div>
@@ -69,4 +61,4 @@ UserPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(UserPage);
+export default withStyles(null)(UserPage);
