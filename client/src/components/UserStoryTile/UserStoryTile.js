@@ -1,34 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AddButton from "../AddButton";
-
+import { Paper } from "@material-ui/core"
 
 const UserStoryTile = (props) => (
-
-
   <div>
-    <nav className="navbar navbar-top navbar-light bg-light">
-      {(props.origin === "userPage") ?
-        <Link
-          to="/story"
-          className={window.location.pathname === "/story" ? "nav-link active" : "nav-link"}
-        >
-          <img className="thumb" alt={props.id} src={require("../../images/" + props.src)} />
-          {props.title}
-          <a className="navbar-brand"></a>
-        </Link>
-        : <div className={window.location.pathname === "/choosecontenttype" ? "nav-link active" : "nav-link"}>
-          <img className="thumb" alt={props.id} src={props.src} />
-          <Link to="/choosecontenttype" className={window.location.pathname === "/choosecontenttype" ? "nav-link active" : "nav-link"}>
-            {props.title}
-          </Link>
-          <Link to="/userPage"> {props.userName} </Link>
-        </div>}
-
-    </nav>
+    <Paper>
+      <span>
+        <img className="thumb" alt={props.id} src={props.src} />
+        <Link to={(props.origin === "user" || props.origin === "home") ? "/story/" + props.id : "/user/" + props.user.id}>{props.title} </Link>
+        by <Link to={"/user/" + props.userId}> {props.userName}</Link>
+      </span>
+    </Paper>
   </div>
 );
-
-
-
-export default UserStoryTile;
+      
+      
+      
+      export default UserStoryTile;

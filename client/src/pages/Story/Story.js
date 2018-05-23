@@ -59,7 +59,8 @@ const styles = theme => ({
 
 class SwipeableTextMobileStepper extends React.Component {
   state = {
-    activeStep: 0
+    activeStep: 0,
+    render:false
   
   };
 
@@ -71,7 +72,7 @@ class SwipeableTextMobileStepper extends React.Component {
     axios.get('/api/moment/moment/' + id)
       .then((result)=> {
         console.log(result.data);
-        swipePix=result.data;
+        this.setState({render:true, swipePix:result.data.reverse()})
       });
     
   }
@@ -95,51 +96,53 @@ class SwipeableTextMobileStepper extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
+    if(this.state.render){
+      const maxSteps = this.state.swipePix.length;
+      return (
+        <div className={classes.root}>
+          <Paper square elevation={0} className={classes.header}>
+            <Link to="/">
+              <i className="material-icons">home</i>
+            </Link>
 
-    const maxSteps = swipePix.length;
+            <Typography>{/* {swipePix[activeStep].caption} */}</Typography>
+          </Paper>
 
-    return (
-      <div className={classes.root}>
-        <Paper square elevation={0} className={classes.header}>
-          <Link to="/">
-            <i class="material-icons">home</i>
-          </Link>
-
-          <Typography>{/* {swipePix[activeStep].caption} */}</Typography>
-        </Paper>
-
-        <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={this.state.activeStep}
-          onChangeIndex={this.handleStepChange}
-          enableMouseEvents
-        >
-          {swipePix.map(step => (
-            <img key={step.caption} className={classes.img} src={step.moment} alt={step.caption} />
-          ))}
-        </SwipeableViews>
-        <MobileStepper
-          variant="text"
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          className={classes.mobileStepper}
-          nextButton={
-            <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-              Next
+          <SwipeableViews
+            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+            index={this.state.activeStep}
+            onChangeIndex={this.handleStepChange}
+            enableMouseEvents
+          >
+            {this.state.swipePix.map(step => (
+              <img key={step.id} className={classes.img} src={step.moment} alt={step.caption} />
+            ))}
+          </SwipeableViews>
+          <MobileStepper
+            variant="text"
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            className={classes.mobileStepper}
+            nextButton={
+              <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
+                Next
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+              </Button>
+            }
+            backButton={
+              <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
+                {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                Back
             </Button>
-          }
-          backButton={
-            <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
-              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Back
-            </Button>
-          }
-        />
-      </div>
-    );
+            }
+          />
+        </div>
+      );
+    }
+    else return null
   }
+    
 }
 
 SwipeableTextMobileStepper.propTypes = {

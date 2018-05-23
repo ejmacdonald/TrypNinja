@@ -1,66 +1,52 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import UserStoryTile from "../UserStoryTile";
+import { Paper, Grid } from "@material-ui/core"
 
-class StoryList extends Component{
-    constructor(props){
+class StoryList extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             stories: []
         };
     }
 
- 
 
-    componentDidMount(){
+
+    componentDidMount() {
         let token = sessionStorage.getItem("TNToken");
 
         axios.get('/api/user/' + token)
             .then((result) => {
                 let userName = result.data.userName;
                 let userId = result.data.id;
-                console.log("useName: " + userName);
-                console.log("userId: " + userId);
+                axios.get('/api/event/storyList/' + userId)
+                    .then((result) => {
+                        console.log(result.data);
+                        this.setState({ stories: result.data.filter(story => story.isOpen == true) });
 
-            let formData = {userId};
-            
-
-            console.log("x: " + JSON.stringify(formData));
-
-            console.log("here's the post");
-
-            axios.get('/api/event/storyList/' + userId)
-            .then((result) => {
-                // access results...
-                
-                console.log("promise completed");
-                console.log(result.data);
-                this.setState({stories: result.data});
-                console.log("----");
-                // console.log(this.state.stories[0].id);
-                
-            });
+                    });
             });
     }
 
-    render(){
-        return(
-            <div> 
-                {this.state.stories.map(story => (             
-                        
-                        <nav className="navbar navbar-top navbar-light bg-light">
-                             
-                            <Link to={"/choosecontenttype/" + story.id}>
-                            <img className="thumb" src={story.Moments[0] ? story.Moments[0].moment : "https://www.calgaryhumane.ca/wp-content/uploads/2018/02/Coming-soon.jpg" }/>
-                                    {story.title} 
-                            <a className="navbar-brand"></a>
-                            </Link>
+    render() {
+        return (
+            <div>
+                <Grid container spacing={24}>
+                    {this.state.stories.map(story => (
+                        <Grid item xs={12}>
+                            <Paper>
+                                <Link to={"/choosecontenttype/" + story.id}>
+                                    <img className="thumb" src={story.Moments[0] ? story.Moments[0].moment : "https://www.calgaryhumane.ca/wp-content/uploads/2018/02/Coming-soon.jpg"} />
+                                    {story.title}
+                                </Link>
+                            </Paper>
+                        </Grid>
 
-                            </nav>
-                    
-                ))}
-                
+                    ))}
+                </Grid>
+
             </div>
         );
     }

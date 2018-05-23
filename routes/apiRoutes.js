@@ -39,6 +39,12 @@ router.post("/object", (req,res)=>{
   })
   .catch(err=>console.log(err))
 })
+router.get("/id/:id", (req,res)=>{
+  db.User.find({where: {id: req.params.id}})
+    .then(user=>{
+      res.send(user)
+    })
+})
 
 router.get("/:token", (req,res)=>{
   console.log("Getting userID w/!!!");
