@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import {Redirect} from "react-router";
+import {Grid} from "@material-ui/core"
 
 class NameStory extends Component{
   constructor(props){
@@ -61,7 +62,10 @@ class NameStory extends Component{
     });
   }
   }
-
+  cancel(e){
+    e.preventDefault()
+    window.location.href="/"
+  }
   updateInput (e) {
     console.log("inside the update function");
     const {name, value} = e.target;
@@ -88,15 +92,40 @@ render() {
               placeholder={this.state.placeholder}
           />
         </div>
-    
-        <button 
-          type="submit" 
-          className="btn btn-primary mb-2"
-          id="submit-btn"
-          onClick={this.onClick}
-        >
-          Begin
-        </button>
+        <Grid container spacing={24}>
+          <Grid item xs>
+            <button 
+              type="submit" 
+              className="btn btn-primary mb-2"
+              id="submit-btn-now"
+              onClick={this.onClick}
+            >
+              Add a moment now
+            </button>
+          </Grid>
+          <Grid item xs>
+              <button 
+                type="submit" 
+                className="btn btn-primary mb-2"
+                id="submit-btn-now"
+                onClick={this.onClick}
+              >
+                Don't add a moment
+              </button>
+          </Grid>
+          <Grid item xs>
+              <button 
+                type="submit" 
+                className="btn btn-primary mb-2"
+                id="submit-btn-now"
+                onClick={this.cancel}
+              >
+                Cancel
+              </button>
+          </Grid>
+          <Grid item xs />
+          <Grid item xs />
+        </Grid>
       </form>
     </div>
   );
