@@ -7,9 +7,12 @@ import ChooseContentType from "./pages/ChooseContentType";
 import TextStory from "./pages/TextStory";
 import UserPage from "./pages/UserPage";
 import Story from "./pages/Story";
+import TitleBar from "./components/TitleBar"
 
-const App = () => (
+const App = () => [
   <Router>
+    <div>
+    <TitleBar/>
     <div className="container">
       {/* <Switch> */}
         <Route exact path="/" component={Home} />
@@ -22,8 +25,9 @@ const App = () => (
 
       {/* </Switch> */}
     </div>
+    </div>
   </Router>
-);
+];
 
 export default App;
 
