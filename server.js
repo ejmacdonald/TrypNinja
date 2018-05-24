@@ -10,7 +10,7 @@ var db = api.db
 
 //enable cors
 app.use(cors());
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
