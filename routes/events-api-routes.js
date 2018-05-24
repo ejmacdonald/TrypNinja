@@ -25,7 +25,8 @@ router.get("/all", function (req, res) {
 
 //route to get the open events for a user and first moment for thumbnail display
 //using on StoryList.js
-router.get("/storyList/:id/:options?", function (req, res) {
+// router.get("/storyList/:id/:options?", function (req, res) {
+  router.get("/storyList/:id", function (req, res) {
   console.log("storyList db call");
   if (req.params.options == "open"){
     const where = {

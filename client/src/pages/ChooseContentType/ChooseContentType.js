@@ -50,9 +50,12 @@ class ChooseContentType extends Component {
             
         </div>
         <div>
+        {/* <Link
+          to="/">
           <EndButton 
             storyId={this.state.story.id}
           />
+        </Link> */}
         </div>
       </div>
 

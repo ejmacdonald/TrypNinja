@@ -25,7 +25,7 @@ function UserStoryTile(props) {
   return (
       <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
-        <Link to={props.link ? props.link : "/story/" + props.id}>
+        <Link to={(props.origin === "addContent") ? "/choosecontenttype/" + props.id : "/story/" + props.id}>
         <CardMedia
           className={classes.media}
           image={props.src}
@@ -33,12 +33,16 @@ function UserStoryTile(props) {
         </Link>
         <CardContent>
           <Typography gutterBottom variant="headline" component="h3">
-            <Link to={props.link ? props.link : "/story/" + props.id}>
+            <Link to={(props.origin === "addContent") ? "/choosecontenttype/" + props.id : "/story/" + props.id}>
             {props.title}
             </Link>
           </Typography>
-          {(props.origin!=="user") ? <Typography component="p">
-            <Link to={props.link ? props.link : "/user/"+props.userId}>{props.userName}</Link>
+          {(props.origin!=="user") ? 
+            <Typography component="p">
+            <Link to= {props.link ? props.link : "/user/"+props.userId}>
+              {props.origin}
+              {props.userName}
+            </Link>
           </Typography> : null
           }
         </CardContent>
