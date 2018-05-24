@@ -7,10 +7,14 @@ class AddContent extends Component {
   render() {
     return (
       <div className="wrapper">
-        <StoryList create={true}/>
+        <StoryList 
+          create={true}
+          origin={thispage}
+        />
       </div>
     );
   }
 }
+
 
 export default AddContent;

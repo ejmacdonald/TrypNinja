@@ -97,7 +97,10 @@ class AddPhotoS3 extends Component{
             />
             <br />
             <br />
+            <Link
+              to="/">
             <button type="submit" className="btn btn-success">Submit</button>
+            </Link>
           </form>
 
           

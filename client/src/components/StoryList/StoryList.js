@@ -53,8 +53,8 @@ class StoryList extends Component {
                         userName={story.User.userName}
                         src={story.Moments[0].moment}
                         userId={story.User.id}
+                        origin={this.props.origin}
                         />
-
                     ))}
                 </Grid>
 
