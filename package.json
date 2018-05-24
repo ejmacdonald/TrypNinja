@@ -1,6 +1,6 @@
 {
   "name": "trypninja",
-  "version": "1.0.0",
+  "version": "1.7.0",
   "description": "trypninja",
   "main": "server.js",
   "engines": {
@@ -9,11 +9,10 @@
   "scripts": {
     "server": "node server.js",
     "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"yarn start\"",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "installDeps": "yarn && cd client && yarn",
-    "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "author": "",
   "license": "ISC",
