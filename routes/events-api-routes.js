@@ -26,28 +26,15 @@ router.get("/all", function (req, res) {
 //route to get the open events for a user and first moment for thumbnail display
 //using on StoryList.js
 // router.get("/storyList/:id/:options?", function (req, res) {
-  router.get("/storyList/:id", function (req, res) {
+  router.get("/storyList/:id/:options?", function (req, res) {
   console.log("storyList db call");
-  if (req.params.options == "open"){
-    const where = {
-      UserId: req.params.id,
-      isOpen: true
-    }
-  } else {
-    const where = {
-      UserId: req.params.id
-    }
-  }
-  if (req.params.options == "notEmpty"){
-    const include = [{ model: db.User, attributes: ['userName', 'id'] }, { model: db.Moment, where: { moment: { $ne: null } }, attributes: ['moment'] }]
-  }
-  else {
-    const include = [{ model: db.User, attributes: ['userName', 'id'] }, { model: db.Moment, attributes: ['moment'] }]
-  }
   db.Event.findAll({
-    where: where,
+    where: {
+      UserId: req.params.id,
+      isOpen: req.params.options=="open" ? true : {$or: [true, false]}
+    },
     order: [['updatedAt', 'DESC']],
-    include: include
+    include: [{ model: db.User, attributes: ['userName', 'id'] }, { model: db.Moment, attributes: ['moment'], where: (req.params.options=="notEmpty") ? {moment: {$ne: null}} : {} }]
   }).then(function (dbEvent) {
     console.log(dbEvent);
     res.json(dbEvent);
