@@ -25,22 +25,21 @@ function UserStoryTile(props) {
   return (
       <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card className={classes.card}>
-        <Link to={(props.origin === "addContent") ? "/choosecontenttype/" + props.id : "/story/" + props.id}>
+        <Link to={props.link ? props.link : "/story/" + props.id}>
         <CardMedia
           className={classes.media}
-          image={props.src}
+            image={`https://res.cloudinary.com/tryp-ninja/image/upload/${props.src}`}
         />
         </Link>
         <CardContent>
           <Typography gutterBottom variant="headline" component="h3">
-            <Link to={(props.origin === "addContent") ? "/choosecontenttype/" + props.id : "/story/" + props.id}>
+            <Link to={props.link ? props.link : "/story/" + props.id}>
             {props.title}
             </Link>
           </Typography>
-          {(props.origin!=="user") ? 
+          {(props.origin!=="user" || props.origin==="addContent") ? 
             <Typography component="p">
             <Link to= {props.link ? props.link : "/user/"+props.userId}>
-              {props.origin}
               {props.userName}
             </Link>
           </Typography> : null

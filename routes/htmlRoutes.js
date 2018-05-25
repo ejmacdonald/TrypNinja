@@ -1,40 +1,31 @@
 require('dotenv').config();
 const express = require('express');
 var router = express.Router();
-var AWS = require('aws-sdk');
 var multer = require('multer');
-var multerS3 = require('multer-s3');
+var cloudinaryStorage = require('multer-storage-cloudinary')
 var db = require("../models");
-
-//AWS
-//aws keys
-var accessKeyId = process.env.aws_access_key_id;
-var secretAccessKey = process.env.aws_secret_access_key;
-AWS.config.update({
-  accessKeyId: accessKeyId,
-  secretAccessKey: secretAccessKey
+var cloudinary = require("cloudinary")
+cloudinary.config({
+    cloud_name: 'tryp-ninja',
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+  }
+);
+var storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: '',
+  allowedFormats: ['jpg', 'png'],
+  filename: function (req, file, cb) {
+    cb(undefined, Date.now().toString());
+  }
 });
 
-    var s3 = new AWS.S3();
+var parser = multer({ storage: storage });
 
-
-      var upload = multer({
-        storage: multerS3({
-            s3: s3,
-            bucket: 'mystoryscl5555',
-            key: function (req, file, cb) {
-                console.log(file);
-                cb(null, Date.now().toString()); //use Date.now() for unique file keys
-            }
-        })
-    });
-  router.post('/S3', upload.array('selectedFile', 1), function(req, res){
-    console.log("--------" );
-    console.log(req.body);
-    console.log(req.files[0].location);
-
+router.post('/S3', parser.single('selectedFile'), function (req, res) {
+    console.log(req.file);
     db.Moment.create({
-      moment: req.files[0].location, 
+      moment: req.file.public_id, 
       isPhoto: 1,
       caption: req.body.caption,
       EventId: req.body.storyId
