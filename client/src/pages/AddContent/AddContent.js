@@ -13,7 +13,7 @@ class AddContent extends Component {
     const token = sessionStorage.getItem("TNToken")
     axios.get(`/api/user/${token}`)
       .then(user => {
-        this.setState({ user: user.data, render: true })
+        if (user.data.id) this.setState({ user: user.data, render: true })
       })
   }
   componentWillMount() {
