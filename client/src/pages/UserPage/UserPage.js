@@ -51,7 +51,7 @@ class UserPage extends Component {
           </Grid>
           </Grid>)
           : null}
-          {this.state.render ? <StoryList id={this.state.user.id} notEmpty={true}/> : null}
+          {this.state.render ? <StoryList userId={this.state.user.id} notEmpty={true} hideUser={true}/> : null}
           <FAB />
       </div>
     )

@@ -82,7 +82,7 @@ class SwipeableTextMobileStepper extends React.Component {
           enableMouseEvents
         >
           {this.state.swipePix.map(step => (
-            <img key={step.label} className={classes.img} src={step.moment} alt={step.label} />
+            <img key={step.id} className={classes.img} src={"https://res.cloudinary.com/tryp-ninja/image/upload/"+step.moment} alt={step.label} />
           ))}
         </SwipeableViews>
         <MobileStepper

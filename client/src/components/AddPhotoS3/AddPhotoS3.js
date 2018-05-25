@@ -9,6 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import CameraButton from "../PhotoButton";
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 
 const styles = theme => ({
   button: {
@@ -99,12 +100,14 @@ class AddPhotoS3 extends Component{
             <br />
             <Link
               to="/">
-            <button type="submit" className="btn btn-success">Submit</button>
+              <button type="button" onClick={this.onSubmit} className="btn btn-success">Submit</button>
             </Link>
           </form>
 
-          
-            <img src={this.state.image} />
+            <CloudinaryContext cloudName="tryp-ninja">
+            {this.state.image ? <Image publicId={this.state.image} fetchFormat="auto"/> : null}
+            </CloudinaryContext>
+
           </div>
         );
       }
