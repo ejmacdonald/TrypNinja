@@ -12,7 +12,10 @@ import TitleBar from "../../components/TitleBar";
 import axios from 'axios'
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: '100%',
+    height: 'auto',
+    width: 'auto',
+    maxHeight: '100%',
     flexGrow: 1,
   },
   header: {
@@ -24,11 +27,17 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
-    maxWidth: 400,
+    height: 'auto',
+    width: 'auto',
     overflow: 'hidden',
-    width: '100%',
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
+  viewsContainer:{
+    maxHeight: "100%",
+    maxWidth: '100%',
+    marginBottom: 50
+  }
 });
 
 class SwipeableTextMobileStepper extends React.Component {
@@ -73,22 +82,23 @@ class SwipeableTextMobileStepper extends React.Component {
     return (this.state.render ? 
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{this.state.swipePix[activeStep].caption}</Typography>
+          <Typography variant="headline" component="h3">{this.state.swipePix[activeStep].caption}</Typography>
         </Paper>
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.activeStep}
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
+          className={classes.viewsContainer}
         >
           {this.state.swipePix.map(step => (
-            <img key={step.label} className={classes.img} src={step.moment} alt={step.label} />
+            <img key={step.moment} className={classes.img} src={"https://res.cloudinary.com/tryp-ninja/image/upload/"+step.moment} alt={step.label} />
           ))}
         </SwipeableViews>
         <MobileStepper
           variant="text"
           steps={maxSteps}
-          position="static"
+          position="bottom"
           activeStep={activeStep}
           className={classes.mobileStepper}
           nextButton={

@@ -21,7 +21,7 @@ class StoryList extends Component {
         if(this.props.userId){
             axios.get("/api/user/id/" + this.props.userId)
             .then(user => {
-                axios.get(`/api/event/storyList/${this.props.userId}/${this.props.option}` )
+                axios.get(`/api/event/storyList/${this.props.userId}/${this.option}` )
                 .then(events => {
                     console.log(user.data)
                     console.log(events.data)
@@ -41,20 +41,22 @@ class StoryList extends Component {
         this.getStories()
     }
     render() {
+        const {create, origin, hideUser} = this.props;
         return this.state.render ? (
             <div>
                 <Grid container spacing={24}>
-                    {(this.props.create) ? <CreateNew /> : null}
+                    {(create) ? <CreateNew /> : null}
                     {this.state.storyList.map(story => (
                         <UserStoryTile 
                         key={story.id}
                         id={story.id}
                         title={story.title}
-                        userName={story.User.userName}
+                        userName={hideUser ? "" : story.User.userName}
                         src={story.Moments[0].moment}
                         userId={story.User.id}
+                        origin={origin}
+                        link={create ? `/choosecontenttype/${story.id}` : undefined}
                         />
-
                     ))}
                 </Grid>
 

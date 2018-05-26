@@ -2,7 +2,7 @@
     "development": {
       "username": "root",
       "password": "root",
-      "database": "story_db",
+      "database": "hp2mmxylx6gavmtm",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
