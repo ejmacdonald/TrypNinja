@@ -111,7 +111,7 @@ class AddPhotoS3 extends Component{
             </CloudinaryContext> */}
 
           </div>
-        ) : <div><p>Posting your moment...</p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"/></div>;
+        ) : <div><p>Posting your moment...</p><img src="/spinner.gif"/></div>;
       }
 
 }
