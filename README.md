@@ -28,7 +28,8 @@ This application has been built as a full-stack application. The `React` framewo
 4. <strong>Step 4:</strong> Start a new story by clicking on the `plus` button or add to an open story by clicking on the story button.
 ![Add a new story](client/src/images/NewStory-small.png)
 
-5.<strong>Step 5:</strong> Name your story. 
+5.<strong>Step 5:</strong> Name your story.
+
 ![New your new story](client/src/images/NameNewStory-small.png)
 
 6.<strong>Step 6:</strong> Add a moment to your story
@@ -37,6 +38,7 @@ This application has been built as a full-stack application. The `React` framewo
 * Click on the camera icon
 * Once your camera is open, take a photo and click on the check-mark button
 * Click the green submit button
+
 ![Adding a photo](client/src/images/AddMoment-small.png)
 ![Adding a photo](client/src/images/NewMoment-small.png)
 
