@@ -4,7 +4,7 @@
   
 
 ### Description<hr/>
-<strong>TrypNinja</strong> is an application which allows the user to create a story from a mobile device. Once logged into the application, the user can either return to a story previously started or begin a new story. The user is offered the option to enter a text item or a photo. When the user selects to add a photo, the application will call up the camera, the user snaps a photo, and the application adds the photo to the story.
+<strong>TrypNinja</strong> is an application which allows the user to create a story from a mobile device. Once logged into the application, the user can either return to a story previously started or begin a new story. The user adds a new moment by adding a photo. When the user decides to add a photo, the application will call up the camera, the user snaps a photo, and the application appends the photo to the story. Optionally, the user can select a photo already stored on their phone.
 
 #### Technologies Used:<hr/>
 This application has been built as a full-stack application. The `React` framework was used to render a dynamic front-end. The back-end utilizes `Node` and a `MySQL` database for housing user accounts and their stories. The application makes use of `express` for middleware and `Sequelize` as an ORM for the database. Images are stored using the `Amazon S3 service`.
