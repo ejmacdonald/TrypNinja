@@ -17,6 +17,7 @@ This application has been built as a full-stack application. The `React` framewo
 * Navigate to https://tryp-ninja.herokuapp.com/
 
 2. <strong>Step 2:</strong> Login with your `Google` account
+
 ![Login screen](client/src/images/Login-small.png)
 
 3. <strong>Step 3:</strong> View a story
