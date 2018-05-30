@@ -36,7 +36,7 @@ This application has been built as a full-stack application. The `React` framewo
 * Click on the camera icon
 * Once your camera is open, take a photo and click on the check-mark button
 * Click the green submit button
-![Adding a photo](client/src/images/AddMoment.png)
+![Adding a photo](client/src/images/AddMoment-small.png)
 ![Adding a photo](client/src/images/NewMoment.png)
 
 ### Potential Future Features<hr/>
