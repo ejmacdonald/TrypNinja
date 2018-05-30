@@ -43,7 +43,6 @@ class UserPage extends Component {
           <Grid item xs={6}>
             <Typography gutterBottom variant="headline" component="h2">
               {this.state.user.userName}
-              {this.state.user.id}
             </Typography>
             <Typography gutterBottom component="p">
               {this.state.user.quote}
